@@ -7,7 +7,7 @@
     "scss": "node-sass --output-style compressed -o css src/scss",
     "autoprefixer": "postcss -u autoprefixer --r css/*",
     "uglify": "uglifyjs src/js/*.js -m -o js/app.js",
-    "icons": "svgo -f src/icons && svg-sprite-generate -d src/icons -o icons/icons.svg",
+    "icons": "svgo -f src/icons && svg-sprite --config config.json src/icons/*.svg",
     "build:css": "run-s scss autoprefixer",
     "build:js": "npm run uglify",
     "watch:css": "onchange \"src/scss/*.scss\" -- run-s scss",
@@ -30,7 +30,7 @@
     "onchange": "^7.1.0",
     "postcss": "^8.1.4",
     "postcss-cli": "^8.1.0",
-    "svg-sprite-generator": "0.0.7",
+    "svg-sprite": "^1.5.0",
     "svgo": "^1.3.2",
     "uglify-js": "^3.11.4"
   }
