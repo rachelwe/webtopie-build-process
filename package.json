@@ -8,11 +8,11 @@
     "autoprefixer": "postcss -u autoprefixer --r css/*",
     "uglify": "uglifyjs src/js/*.js -m -o js/app.js",
     "icons": "svgo -f src/icons && svg-sprite-generate -d src/icons -o icons/icons.svg",
-    "serve": "browser-sync start --server --files \"css/*.css, js/*.js, *.html, *.php\"",
     "build:css": "run-s scss autoprefixer",
     "build:js": "npm run uglify",
     "watch:css": "onchange \"src/scss/*.scss\" -- run-s scss",
     "watch:js": "onchange \"src/js/*.js\" -- run-s uglify",
+    "serve": "browser-sync start --server --files \"css/*.css, js/*.js, *.html, *.php\"",
     "dev": "run-p serve watch:*",
     "build": "run-p build:*"
   },
