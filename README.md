@@ -3,7 +3,7 @@ A simple and lightweight build process with Sass, svg-sprite-generator and brows
 
 Greatly inspired by the article [Why npm scripts?](https://css-tricks.com/why-npm-scripts/) and the repo associated [npm-build-boilerplate](https://github.com/damonbauer/npm-build-boilerplate) (including the list of available tasks in this README)
 
-This repo contains example files in the `src` an the production folders for a better understanding, feel free to delete or replace them.
+This repo contains example files in the `src` and the production folders for a better understanding, feel free to delete or replace them.
 
 ## Usage
 To use this project you have to have node.js & npm both installed and be familiar with how npm scripts works.
