@@ -3,10 +3,29 @@ A simple and lightweight build process with Sass, svg-sprite-generator and brows
 
 Greatly inspired by the article [Why npm scripts?](https://css-tricks.com/why-npm-scripts/) and the repo associated [npm-build-boilerplate](https://github.com/damonbauer/npm-build-boilerplate) (including the list of available tasks in this README)
 
+This repo contains example files in the `src` an the production folders for a better understanding, feel free to delete or replace them.
+
 ## Usage
 To use this project you have to have node.js & npm both installed and be familiar with how npm scripts works.
 
 If this build prosess is only used for one project, use the command line `npm install` in your directory, otherwise consider installing globally the scripts listed in `dev dependencies` inside the package.json (you don't need a heavy `node_modules` folder in every single project!).
+
+## Folder structure
+The task are written to work with this file structure :
+
+```
+|-- css             # Production css
+|-- icons           # Production svg sprite
+|-- js              # Production js
+|-- src                 #Source files
+    |-- icons
+    |-- js
+    |-- scss
+|-- config.json     # Config for svg-sprite
+|-- index.html      # Your index file
+```
+
+If you change it, don't forget to modify the associated scripts in `package.json`
 
 ## List of available tasks
 ### `autoprefixer`
