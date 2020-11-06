@@ -30,6 +30,8 @@ If this build prosess is only used for one project, use the command line `npm in
   `svgo -f src/icons && svg-sprite --config config.json src/icons/*.svg`
 
   Compress separate SVG files and combine them into one SVG "sprite" using the config inside the config.json file
+  
+  The use of this sprite and how to create an SVG icon system is wonderfully explained in this page : [SVG Icon System](https://mcraiganthony.github.io/svg-icons/)
 
 ### `build:css`
   `run-s scss autoprefixer`
