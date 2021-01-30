@@ -1,14 +1,6 @@
 {
   "dest": "icons",
   "mode": {
-      "css": {
-          "dest": "",
-          "sprite": "sprite.css.svg",
-          "render": {
-              "css": true
-          },
-          "example": true
-      },
       "symbol": {
           "dest": "",
           "sprite": "sprite.svg",
