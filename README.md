@@ -16,6 +16,7 @@ The task are written to work with this file structure :
 ```
 |-- css               # Production css
 |-- icons             # Production svg sprite
+    |-- svg               # Cleaned individual svgs
 |-- js                # Production js
 |-- src                   #Source files
     |-- icons
