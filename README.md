@@ -52,9 +52,9 @@ If you change it, don't forget to modify the associated scripts in `package.json
   WARNING : uglify does not compile ES6 syntax (arrow functions for example)
 
 ### `icons`
-  `svgo -f src/icons && svg-sprite --config config.json src/icons/*.svg`
+  `svgo -f src/icons -o icons/svg && svg-sprite --config config.json icons/svg/*.svg`
 
-  Compress separate SVG files and combine them into one SVG "sprite" using the config inside the config.json file
+  Compress separate SVG files to the `icons/svg` directory and combine them into one SVG "sprite" using the config inside the config.json file
   
   The use of this sprite and how to create an SVG icon system is wonderfully explained in this page : [SVG Icon System](https://mcraiganthony.github.io/svg-icons/)
 
@@ -67,6 +67,11 @@ If you change it, don't forget to modify the associated scripts in `package.json
   `run-s babel uglify`
 
   Alias to run the `babel` and `uglify` tasks.
+
+### `build:icons`
+  `npm run icons`
+
+  Alias to run the `icons` task.
 
 ### `build`
   `run-p build:*`
@@ -84,6 +89,11 @@ If you change it, don't forget to modify the associated scripts in `package.json
   `onchange \"src/js/*.js\" -- run-s babel`
 
   Watches for any .js file in `src` to change, then runs the `babel` task
+
+### `watch:icons`
+  `onchange \"src/icons/*.svg\" -- run-s icons`
+
+  Watches for any .svg file in `src` to change, then runs the `icons` task
   
 ### `serve`
   `browser-sync start --server --files \"css/*.css, js/*.js, **/*.html, **/*.php\"`
