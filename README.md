@@ -14,15 +14,16 @@ If this build prosess is only used for one project, use the command line `npm in
 The task are written to work with this file structure :
 
 ```
-|-- css             # Production css
-|-- icons           # Production svg sprite
-|-- js              # Production js
-|-- src                 #Source files
+|-- css               # Production css
+|-- icons             # Production svg sprite
+|-- js                # Production js
+|-- src                   #Source files
     |-- icons
     |-- js
     |-- scss
-|-- config.json     # Config for svg-sprite
-|-- index.html      # Your index file
+|-- babel.config.json # Config for babel
+|-- config.json       # Config for svg-sprite
+|-- index.html        # Your index file
 ```
 
 If you change it, don't forget to modify the associated scripts in `package.json`
@@ -38,8 +39,13 @@ If you change it, don't forget to modify the associated scripts in `package.json
 
   Compile Scss to CSS
 
+### `babel`
+  `babel src/js --out-file js/app.js`
+
+  Transform all ES2015-ES2020 code to be ES5 compatible & contatenate the files into a single one : `app.js`
+
 ### `uglify`
-  `uglifyjs src/js/*.js -m -o js/app.js`
+  `uglifyjs js/*.js -m -o js/app.min.js`
 
   Uglify (minify) a production ready bundle of JavaScript
   
@@ -58,9 +64,9 @@ If you change it, don't forget to modify the associated scripts in `package.json
   Alias to run the `scss` and `autoprefixer` tasks. Compiles Scss to CSS & add vendor prefixes
 
 ### `build:js`
-  `npm run uglify`
+  `run-s babel uglify`
 
-  Alias to run the `uglify` tasks.
+  Alias to run the `babel` and `uglify` tasks.
 
 ### `build`
   `run-p build:*`
@@ -75,12 +81,12 @@ If you change it, don't forget to modify the associated scripts in `package.json
   It does not run the `autoprefixer` command, which would be too long to execute at every file change.
 
 ### `watch:js`
-  `onchange \"src/js/*.js\" -- run-s uglify`
+  `onchange \"src/js/*.js\" -- run-s babel`
 
-  Watches for any .js file in `src` to change, then runs the `uglify` task
+  Watches for any .js file in `src` to change, then runs the `babel` task
   
 ### `serve`
-  `browser-sync start --server --files \"css/*.css, js/*.js, *.html, *.php\"`
+  `browser-sync start --server --files \"css/*.css, js/*.js, **/*.html, **/*.php\"`
 
   Start a new server and watch for CSS & JS file changes in the `css` and `js` folder and of any html or php file.
 
