@@ -8,7 +8,7 @@ This repo contains example files in the `src` and the production folders for a b
 ## Usage
 To use this project you have to have node.js & npm both installed and be familiar with how npm scripts works.
 
-If this build prosess is only used for one project, use the command line `npm install` in your directory, otherwise consider installing globally the scripts listed in `dev dependencies` inside the package.json (you don't need a heavy `node_modules` folder in every single project!).
+If this build prosess is only used for one project, use the command line `npm install` in your directory, otherwise consider installing globally the scripts listed in `dev dependencies` inside the package.json (you don't need a heavy `node_modules` folder in every single project!). Unfortunately, babel doesn't work with global installations, so you will still have to install those 3 pachages locally 😞
 
 ## Folder structure
 The task are written to work with this file structure :
@@ -16,6 +16,7 @@ The task are written to work with this file structure :
 ```
 |-- css               # Production css
 |-- icons             # Production svg sprite
+    |-- svg               # Cleaned individual svgs
 |-- js                # Production js
 |-- src                   #Source files
     |-- icons
