@@ -1,1 +1,6 @@
 @import 'components/icon';
+
+// This class is unused and will be purged at build time
+.paragraph {
+  color: red;
+}

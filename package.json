@@ -6,10 +6,11 @@
   "scripts": {
     "scss": "node-sass --output-style compressed -o css src/scss",
     "autoprefixer": "postcss -u autoprefixer --r css/*",
+    "purgecss": "purgecss --css css/styles.css --content **/*.html **/*.js **/*.php --output css/styles.purged.css",
     "babel": "babel src/js --out-file js/app.js",
     "uglify": "uglifyjs js/*.js -m -o js/app.min.js",
     "icons": "svgo -f src/icons -o icons/svg && svg-sprite --config config.json icons/svg/*.svg",
-    "build:css": "run-s scss autoprefixer",
+    "build:css": "run-s scss autoprefixer purgecss",
     "build:js": "run-s babel uglify",
     "build:icons": "npm run icons",
     "watch:css": "onchange \"src/**/*.scss\" -- run-s scss",
