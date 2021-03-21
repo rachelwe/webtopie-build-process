@@ -10,6 +10,8 @@ To use this project you have to have node.js & npm both installed and be familia
 
 If this build prosess is only used for one project, use the command line `npm install` in your directory, otherwise consider installing globally the scripts listed in `dev dependencies` inside the package.json (you don't need a heavy `node_modules` folder in every single project!). Unfortunately, babel doesn't work with global installations, so you will still have to install those 3 pachages locally 😞
 
+In order to use the PurgeCSS command, you must have installed it globally using `npm i -g purgecss`. If you want to install it locally, you can run `npm i -D purgecss` and launch the purgeCSS command using npx.
+
 ## Folder structure
 The task are written to work with this file structure :
 
@@ -34,6 +36,12 @@ If you change it, don't forget to modify the associated scripts in `package.json
   `postcss -u autoprefixer --r css/*`
 
   Add vendor prefixes to your CSS automatically
+
+### `purgecss`
+  `purgecss --css css/styles.css --content **/*.html **/*.js **/*.php --output css/styles.purged.css`
+
+  Remove unused CSS rules, the content option specify the files to crawl in order to determine which rules are used. (Here, any html, js or php file in any subfolder).
+  Output the result to the `styles.purged.css` file.
 
 ### `scss`
   `node-sass --output-style compressed -o css src/scss`
@@ -62,7 +70,7 @@ If you change it, don't forget to modify the associated scripts in `package.json
 ### `build:css`
   `run-s scss autoprefixer`
 
-  Alias to run the `scss` and `autoprefixer` tasks. Compiles Scss to CSS & add vendor prefixes
+  Alias to run the `scss`, `purgecss` and `autoprefixer` tasks. Compiles Scss to CSS, add vendor prefixes and remove unused rules.
 
 ### `build:js`
   `run-s babel uglify`
@@ -125,7 +133,7 @@ This build process is developed and maintained by [Rachel Pellin](https://prache
 [![Twitter](https://img.shields.io/badge/Twitter-4A4A4A?style=flat-square&logo=twitter)](https://twitter.com/r_a_chl)  [![LinkedIn](https://img.shields.io/badge/LinkedIn-4A4A4A?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/rachel-pellin/)
 
 ## Contributions
-Contributions are open, feel free to post an [issue](https://github.com/rachelwe/Simulateur-ecoindex/issues) if you have any problem.
+Contributions are open, feel free to post an [issue](https://github.com/rachelwe/webtopie-build-process/issues) if you have any problem.
 
 ## License
 webtopie-build-process is licensed under the MIT License
