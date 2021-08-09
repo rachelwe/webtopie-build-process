@@ -1,0 +1,19 @@
+/*
+## Icons
+=====================*/
+///
+/// SVG Icon system, from [Craig Anthony](https://mcraiganthony.github.io/svg-icons/)
+/// @group Components
+/// @example markup
+///   <svg class="icon"><use xlink:href="icons/sprite.svg#heart"/></svg>
+///
+.icon {
+  display: inline-block;
+  fill: currentColor;
+  height: 1em;
+  line-height: 1;
+  position: relative;
+  top: -1px;
+  vertical-align: middle;
+  width: 1em;
+}

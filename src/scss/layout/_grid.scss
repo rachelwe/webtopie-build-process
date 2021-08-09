@@ -1,0 +1,20 @@
+/*
+## Grid
+=====================*/
+/// @group Layout
+/// Grid
+/// Use inline definition of the css variables for config
+.grid {
+  display: block; // stacked on small devices
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gutter);
+
+  &-auto {
+    @extend .grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
+  }
+
+  @media screen and (min-width: 40rem) {
+    display: grid; // activate grid properties
+  }
+}

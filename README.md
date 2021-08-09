@@ -3,12 +3,12 @@ A simple and lightweight build process with Sass, svg-sprite-generator and brows
 
 Greatly inspired by the article [Why npm scripts?](https://css-tricks.com/why-npm-scripts/) and the repo associated [npm-build-boilerplate](https://github.com/damonbauer/npm-build-boilerplate) (including the list of available tasks in this README)
 
-This repo contains example files in the `src` and the production folders for a better understanding, feel free to delete or replace them.
+This repo also contains some js utility functions, a scss boilerplate and some example files in the `src` and the production folders for a better understanding, feel free to delete or replace them.
 
 ## Usage
 To use this project you have to have node.js & npm both installed and be familiar with how npm scripts works.
 
-If this build prosess is only used for one project, use the command line `npm install` in your directory, otherwise consider installing globally the scripts listed in `dev dependencies` inside the package.json (you don't need a heavy `node_modules` folder in every single project!). Unfortunately, babel doesn't work with global installations, so you will still have to install those 3 pachages locally 😞
+If this build process is only used for one project, use the command line `npm install` in your directory, otherwise consider installing globally the scripts listed in `dev dependencies` inside the package.json (you don't need a heavy `node_modules` folder in every single project!).
 
 In order to use the PurgeCSS command, you must have installed it globally using `npm i -g purgecss`. If you want to install it locally, you can run `npm i -D purgecss` and launch the purgeCSS command using npx.
 
@@ -16,88 +16,89 @@ In order to use the PurgeCSS command, you must have installed it globally using 
 The task are written to work with this file structure :
 
 ```
-|-- css               # Production css
-|-- icons             # Production svg sprite
-    |-- svg               # Cleaned individual svgs
-|-- js                # Production js
-|-- src                   #Source files
+|-- dist                  # Production files
+    |-- css                   # css
+    |-- icons                 # svg sprite
+        |-- svg                   # Cleaned individual svgs
+    |-- js                   # js
+|-- src                   # Source files
     |-- icons
     |-- js
     |-- scss
-|-- babel.config.json # Config for babel
-|-- config.json       # Config for svg-sprite
-|-- index.html        # Your index file
+|-- rollup.config.json    # Config for Rollup
+|-- svg.config.json       # Config for svg-sprite
+|-- index.html            # Your index file
 ```
 
-If you change it, don't forget to modify the associated scripts in `package.json`
+If you change it, don't forget to modify the associated scripts in `package.json` and inside the config files.
 
 ## List of available tasks
+### `scss`
+  `sass --error-css --style=compressed --no-source-map --update src/scss:dist/css`
+
+  Compile Scss to CSS (using Dart Sass)
+
 ### `autoprefixer`
-  `postcss -u autoprefixer --r css/*`
+  `postcss --no-map -u autoprefixer --r dist/css/*`
 
   Add vendor prefixes to your CSS automatically
 
 ### `purgecss`
-  `purgecss --css css/styles.css --content **/*.html **/*.js **/*.php --output css/styles.purged.css`
+  `purgecss --css dist/css/styles.css --content **/*.html **/*.js **/*.php --output dist/css/styles.purged.css`
 
   Remove unused CSS rules, the content option specify the files to crawl in order to determine which rules are used. (Here, any html, js or php file in any subfolder).
   Output the result to the `styles.purged.css` file.
 
-### `scss`
-  `node-sass --output-style compressed -o css src/scss`
 
-  Compile Scss to CSS
 
-### `babel`
-  `babel src/js --out-file js/app.js`
+### `bundle`
+  `rollup --config`
 
-  Transform all ES2015-ES2020 code to be ES5 compatible & contatenate the files into a single one : `app.js`
+  Bundle javascript files using js modules in a single js file (`app.js`) with Tree Shaking (doesn't bundle unused functions, perfect if you want to store utilities). It also allows us to stay compatible with more browsers.
+
+  This build process no longer transpile ES2015 code to be ES5 compatible because the support is good enough for most of the projects I work on, but if you need to support older browsers  (like IE11), you might want to checkout this plugin : [@rollup/plugin-buble](https://github.com/rollup/plugins/tree/master/packages/buble)
+
 
 ### `uglify`
-  `uglifyjs js/*.js -m -o js/app.min.js`
+  `terser dist/js/app.js -m -o dist/js/app.min.js`
 
-  Uglify (minify) a production ready bundle of JavaScript
-  
-  WARNING : uglify does not compile ES6 syntax (arrow functions for example)
+  Uglify (minify) a production ready bundle of JavaScript using Terser (Which seems to be the best option for ES2015 minification).  
 
 ### `icons`
-  `svgo -f src/icons -o icons/svg && svg-sprite --config config.json icons/svg/*.svg`
+  `svgo -f src/icons -o dist/icons/svg && svg-sprite --config svg.config.json dist/icons/svg/*.svg`
 
-  Compress separate SVG files to the `icons/svg` directory and combine them into one SVG "sprite" using the config inside the config.json file
+  Compress separate SVG files to the `dist/icons/svg` directory and combine them into one SVG "sprite" using the config inside the config.json file
   
   The use of this sprite and how to create an SVG icon system is wonderfully explained in this page : [SVG Icon System](https://mcraiganthony.github.io/svg-icons/)
 
 ### `build:css`
-  `run-s scss autoprefixer`
+  `run-s scss autoprefixer purgecss`
 
   Alias to run the `scss`, `purgecss` and `autoprefixer` tasks. Compiles Scss to CSS, add vendor prefixes and remove unused rules.
+  
+  You might want to checkout that everything is working as expected when you switch to the purged css file, some very specific css rules might get lost in the process. You can add exceptions with [the --safelist flag](https://purgecss.com/CLI.html#safelist)
 
 ### `build:js`
-  `run-s babel uglify`
+  `run-s bundle uglify`
 
-  Alias to run the `babel` and `uglify` tasks.
+  Alias to run the `bundle` and `uglify` tasks.
 
 ### `build:icons`
   `npm run icons`
 
   Alias to run the `icons` task.
 
-### `build`
-  `run-p build:*`
-
-  Alias to run all of the `build` commands
-
 ### `watch:css`
-  `onchange \"src/scss/*.scss\" -- run-s scss`
+  `onchange \"src/**/*.scss\" -- run-s scss`
 
   Watches for any .scss file in `src` to change, then runs the `scss` task.
   
-  It does not run the `autoprefixer` command, which would be too long to execute at every file change.
+  It does not run the `autoprefixer` and `purgecss` command, which would be too long to execute at every file change.
 
 ### `watch:js`
-  `onchange \"src/js/*.js\" -- run-s babel`
+  `onchange \"src/**/*.js\" -- run-s bundle uglify`
 
-  Watches for any .js file in `src` to change, then runs the `babel` task
+  Watches for any .js file in `src` to change, then runs the `bundle` and `uglify` task
 
 ### `watch:icons`
   `onchange \"src/icons/*.svg\" -- run-s icons`
@@ -105,9 +106,9 @@ If you change it, don't forget to modify the associated scripts in `package.json
   Watches for any .svg file in `src` to change, then runs the `icons` task
   
 ### `serve`
-  `browser-sync start --server --files \"css/*.css, js/*.js, **/*.html, **/*.php\"`
+  `browser-sync start --server --files \"**/*.css, **/*.min.js, **/*.html, **/*.php\""`
 
-  Start a new server and watch for CSS & JS file changes in the `css` and `js` folder and of any html or php file.
+  Start a new server and watch for CSS, JS, HTML or PHP file changes.
 
   if your project is already running on a server, you have to modify this line to look like this (just replace `YOUR-LOCAL-SERVER-URL`) :
   
@@ -116,14 +117,14 @@ If you change it, don't forget to modify the associated scripts in `package.json
 ### `dev`
   `run-p serve watch:*`
 
-  Run the following tasks simultaneously: `serve`, `watch:css`, `watch:js`. When a .scss or .js file changes in `src`, the task will compile the changes to the respective folders, and the server will be notified of the change. Any browser connected to the server will then inject the new file.
+  Run the following tasks simultaneously: `serve`, `watch:css`, `watch:js` and `watch:icons`. When a .scss, .js or .svg file changes in `src`, the task will compile the changes to the respective folders, and the server will be notified of the change. Any browser connected to the server will then inject the new file.
   
   A css change does not trigger a full-page reload, the changes are discrete.
 
 ### `build`
   `run-p build:*`
 
-  Build the production files without launching a server and run `autoprefixer`.
+  Build the production files without launching a server.
 
 
 

@@ -1,0 +1,44 @@
+/*
+## Accessibility
+=====================*/
+////
+/// @group Accessibility
+////
+
+/// sr-only class vor visually hidden elements
+.sr-only {
+  border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;	
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+/// Skip-link style
+/// @example markup - lien à insérer avant le menu
+///   <a class="skip-link" href='#main'>Passer au contenu</a>
+///   <main class="" tabindex="-1" id="main"></main>
+///
+.skip-link {
+	opacity: 0;
+  background: var(--color-primary);
+  color:  var(--color-background-blue);
+	font-weight: 700;
+	top: 0;
+	z-index: 99999;
+  left: 50%;
+  padding: .5rem 1.5rem;
+  position: absolute;
+	transform: translateY(-100%) translateX(-50%);
+	transition: transform 0.3s;
+
+  &:focus {
+    opacity: 1;
+    transform: translateY(0%) translateX(-50%);
+  }
+}

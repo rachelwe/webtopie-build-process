@@ -1,0 +1,64 @@
+/// <span style="color: #2196F3;font-size: 2rem; line-height:0">■</span> Blue<br>
+/// <span style="color: red;font-size: 2rem; line-height:0">■</span> Red<br>
+/// <span style="color: black;font-size: 2rem; line-height:0">■</span> Black<br>
+$colors: (
+  'blue': #2196F3,
+  'red': red,
+  'black': black
+);
+
+/// Spacer values to generate padding & margin classes
+$spacers: (
+  'auto': auto,
+  '0': 0,
+  'xs': '0.5rem',
+  's': '1rem',
+  'm': '2rem',
+  'l': '3rem',
+  'xl': '4rem',
+  'xxl': '5rem',
+);
+
+/// CSS variables for theming and global config
+:root {
+  // Brand colors
+  --color-primary: RoyalBlue;
+  --color-secondary: aliceblue;
+  --color-tertiary: whitesmoke;
+
+  // Semantic colors
+  --color-success: green;
+  --color-error: red;
+  --color-info: cyan;
+
+  // font family
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-title: var(--font-body);
+  --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  // Spacers
+  @each $name, $value in $spacers {
+    --spacer-#{$name}: #{$value};
+  }
+
+  // Blocks
+  --border-radius: 0;
+
+  // Theme config
+  --color-text: #222;
+  --color-background: #fff;
+  --color-background-accent: #ddd;
+  --color-link: var(--color-primary);
+  --color-button-bg: var(--color-primary);
+  --color-button-text: #fff;
+  --text-size-desktop: 1.2rem;
+  --text-size-mobile: 1rem;
+
+  // Sizes
+  --site-width: 55rem;
+
+  // Grid
+  --grid-gutter: 2rem;
+  --grid-columns: 2;
+  --grid-item-width: 250px;
+}

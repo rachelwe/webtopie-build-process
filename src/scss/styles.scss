@@ -1,6 +1,67 @@
-@import 'components/icon';
+/*!
+Author: Rachel Pellin
+Author URI: https://prachel.fr/
+Package: webtopie-sass-starter
+Version: 1.0
+*/
 
-// This class is unused and will be purged at build time
-.paragraph {
-  color: red;
-}
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Variables
+
+# Elements
+  ## Reset
+  ## Base
+  ## Typography
+  ## Media
+  ## Tables
+  ## Forms
+  ## Progress
+
+# Components
+  ## Icons
+
+# Layout
+  ## Containers
+  ## Grid
+
+# Utility
+	## Accessibility
+  ## Spacers
+
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+@import "config/mixins";
+@import "config/variables";
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+@import "elements/reset";
+@import "elements/base";
+@import "elements/typography";
+@import "elements/media";
+@import "elements/tables";
+@import "elements/forms";
+@import "elements/progress";
+
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+@import "components/icons";
+
+/*--------------------------------------------------------------
+# Layout
+--------------------------------------------------------------*/
+@import "layout/containers";
+@import "layout/grid";
+
+/*--------------------------------------------------------------
+# Utility
+--------------------------------------------------------------*/
+@import "utility/accessibility";
+@import "utility/spacers";

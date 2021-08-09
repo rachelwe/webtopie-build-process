@@ -1,0 +1,19 @@
+meter,
+progress {
+  width: 100%;
+  max-width: 25rem;
+  height: 8px;
+  border-radius: var(--border-radius);
+  border: none;
+}
+
+progress {
+  appearance: none;
+  background: var(--color-background-accent);
+  color: var(--color-primary);
+  overflow: hidden;
+
+  &::-webkit-progress-bar {background: var(--color-background-accent);}
+  &::-webkit-progress-value {background: var(--color-primary);}
+  &::-moz-progress-bar {background: var(--color-primary);}
+}

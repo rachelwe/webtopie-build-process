@@ -1,0 +1,24 @@
+/*
+## Medias
+@source Vanilla CSS - https://github.com/bradleytaunt/vanilla-css
+=====================*/
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+figure {
+  border: 1px solid var(--color-primary);
+  display: inline-block;
+  padding: 1rem;
+  width: auto;
+}
+figure img {
+  margin: 0;
+}
+figure figcaption {
+  font-size: 80%;
+  margin-top: 0.5rem;
+}

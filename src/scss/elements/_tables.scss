@@ -1,0 +1,42 @@
+/*
+## Tables
+@source Vanilla CSS - https://github.com/bradleytaunt/vanilla-css
+=====================*/
+
+table {
+  border: 1px solid var(--color-primary);
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 100%;
+
+  @media screen and (min-width: 50rem) {
+    table-layout: fixed;
+  }
+}
+table caption {
+  margin: 2rem 0;
+}
+table thead {
+  text-align: center;
+}
+table tbody {
+  text-align: right;
+}
+table tr {
+  border-bottom: 1px solid var(--color-primary);
+}
+table tbody tr:nth-child(even) {
+  background: var(--color-tertiary);
+}
+table th {
+  background: var(--color-secondary);
+  font-weight: bold;
+}
+table th,
+table td {
+  padding: 1rem;
+}
+table th:not(last-of-type),
+table td:not(last-of-type) {
+  border-right: 1px solid var(--color-primary);
+}

@@ -1,0 +1,112 @@
+/*
+## Typography
+@source Vanilla CSS - https://github.com/bradleytaunt/vanilla-css
+=====================*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  line-height: 1.2;
+}
+h1 {
+  font-size: 200%;
+}
+h2 {
+  font-size: 150%;
+}
+h3 {
+  font-size: 120%;
+}
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+h5,
+h6 {
+  text-transform: uppercase;
+}
+
+header h1 {
+  border-bottom: 1px solid;
+}
+
+p {
+  margin: 2rem 0;
+}
+
+a,
+a:visited {
+  color: var(--color-link);
+}
+
+strong,
+time,
+b {
+  font-weight: bold;
+}
+em,
+dfn,
+i {
+  font-style: italic;
+}
+sub {
+  font-size: 60%;
+  vertical-align: bottom;
+}
+small {
+  font-size: 80%;
+}
+
+blockquote,
+q {
+  background: var(--color-secondary);
+  border-left: 10px solid var(--color-primary);
+  display: block;
+  font-family: "Georgia", serif;
+  padding: 1rem;
+}
+blockquote p:first-child {
+  margin-top: 0;
+}
+cite {
+  font-family: "Georgia", serif;
+  font-style: italic;
+  font-weight: bold;
+}
+
+kbd,
+code,
+samp,
+pre,
+var {
+  font-family: monospace;
+  font-size: 1rem;
+}
+code,
+pre {
+  background: var(--color-tertiary);
+  padding: 0.5rem 1rem;
+}
+code pre,
+pre code {
+  padding: 0;
+}
+
+ul,
+ol {
+  margin: 2rem 0;
+  padding: 0 0 0 2rem;
+
+  ul, ol {
+    margin: 0 0 2rem;
+  }
+}
+
+dl dd {
+  padding-left: 2rem;
+}

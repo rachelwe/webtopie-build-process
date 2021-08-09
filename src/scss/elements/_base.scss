@@ -1,0 +1,43 @@
+/*
+## Base
+@source Vanilla CSS - https://github.com/bradleytaunt/vanilla-css
+=====================*/
+
+* {
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  line-height: 1.5;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-size-mobile);
+  @media screen and (min-width: 50rem) {
+    font-size: var(--text-size-desktop);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+dl,
+img,
+figure {
+  margin: 2rem 0;
+}
