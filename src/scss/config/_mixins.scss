@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:map";
 
 
 /// Convert pixels to rem units
@@ -82,5 +83,16 @@
       padding-top: #{$value};
       padding-bottom: #{$value};
     }
+  }
+}
+
+/// @require {variable} breakpoint
+/// Generate breakpoint syntax
+/// @example sass
+///   @include mq(small){...};
+@mixin mq($breakpoint) {
+  $size: map.get($breakpoints, $breakpoint);
+  @media (min-width: $size) {
+    @content;
   }
 }

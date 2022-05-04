@@ -1,12 +1,3 @@
-/// <span style="color: #2196F3;font-size: 2rem; line-height:0">■</span> Blue<br>
-/// <span style="color: red;font-size: 2rem; line-height:0">■</span> Red<br>
-/// <span style="color: black;font-size: 2rem; line-height:0">■</span> Black<br>
-$colors: (
-  'blue': #2196F3,
-  'red': red,
-  'black': black
-);
-
 /// Spacer values to generate padding & margin classes
 $spacers: (
   'auto': auto,
@@ -17,6 +8,12 @@ $spacers: (
   'l': '3rem',
   'xl': '4rem',
   'xxl': '5rem',
+);
+
+$breakpoints: (
+  small: 40rem,
+  medium: 65rem,
+  large: 90rem,
 );
 
 /// CSS variables for theming and global config
@@ -58,7 +55,7 @@ $spacers: (
   --site-width: 55rem;
 
   // Grid
-  --grid-gutter: 2rem;
+  --grid-gap: 2rem;
   --grid-columns: 2;
   --grid-item-width: 250px;
 }

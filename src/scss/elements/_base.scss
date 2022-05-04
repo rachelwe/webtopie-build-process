@@ -23,7 +23,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--text-size-mobile);
-  @media screen and (min-width: 50rem) {
+  @include mq('medium') {
     font-size: var(--text-size-desktop);
   }
 }

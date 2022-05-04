@@ -7,14 +7,13 @@
 .grid {
   display: block; // stacked on small devices
   grid-template-columns: repeat(var(--grid-columns), 1fr);
-  gap: var(--grid-gutter);
+  gap: var(--grid-gap);
 
   &-auto {
     @extend .grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
   }
-
-  @media screen and (min-width: 40rem) {
+  @include mq('small') {
     display: grid; // activate grid properties
   }
 }

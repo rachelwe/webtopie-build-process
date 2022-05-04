@@ -9,7 +9,7 @@ table {
   table-layout: auto;
   width: 100%;
 
-  @media screen and (min-width: 50rem) {
+  @include mq('medium') {
     table-layout: fixed;
   }
 }
