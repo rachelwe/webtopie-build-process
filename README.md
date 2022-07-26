@@ -139,6 +139,11 @@ If you change it, don't forget to modify the associated scripts in `package.json
 
   Generates a documentation folder from all the markdown files in the project.
 
+### `docs`
+  `run-s docs:js docs:generator`
+
+  Generates all the docs.
+
 ## Author
 This build process is developed and maintained by [Rachel Pellin](https://prachel.fr/) for personal projects and [Webtopie](https://webtopie.fr/) clients.
 
