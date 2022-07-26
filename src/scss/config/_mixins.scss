@@ -38,7 +38,14 @@
   & {
     font-size: rem($min-font-size);
     @media screen and (min-width: $min) {
-      font-size: calc(#{rem($min-font-size)} + #{math.div($max-font-size, 16) - math.div($min-font-size, 16)} * math.div(((100vw - #{rem($min-vw)}), #{strip-unit(math.div($max-vw, 16) - math.div($min-vw, 16))})));
+      font-size: calc(
+        #{rem($min-font-size)} + 
+        #{math.div($max-font-size, 16) - math.div($min-font-size, 16)} * 
+        (
+          (100vw - #{rem($min-vw)}) / 
+          #{strip-unit(math.div($max-vw, 16) - math.div($min-vw, 16))}
+        )
+      );
     }
     @media screen and (min-width: $max) {
       font-size: rem($max-font-size);
