@@ -12,6 +12,8 @@ If this build process is only used for one project, use the command line `npm in
 
 In order to use the PurgeCSS command, you must have installed it globally using `npm i -g purgecss`. If you want to install it locally, you can run `npm i -D purgecss` and launch the purgeCSS command using npx.
 
+If you want to use the documentation script, you also need to install it globally for it to work using the command `npm i -g retypeapp`
+
 ## Folder structure
 The task are written to work with this file structure :
 
@@ -27,6 +29,7 @@ The task are written to work with this file structure :
     |-- scss
 |-- rollup.config.json    # Config for Rollup
 |-- svg.config.json       # Config for svg-sprite
+|-- retype.yml            # Config for Retype docs
 |-- index.html            # Your index file
 ```
 
@@ -126,7 +129,15 @@ If you change it, don't forget to modify the associated scripts in `package.json
 
   Build the production files without launching a server.
 
+### `docs:js`
+  `jsdoc2md src/js/**/*.js > js.md`
 
+  Generates a markdown file from the js docs comments
+
+### `docs:generator`
+  `retype build`
+
+  Generates a documentation folder from all the markdown files in the project.
 
 ## Author
 This build process is developed and maintained by [Rachel Pellin](https://prachel.fr/) for personal projects and [Webtopie](https://webtopie.fr/) clients.

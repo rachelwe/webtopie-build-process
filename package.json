@@ -18,7 +18,10 @@
     "watch:icons": "onchange \"src/icons/*.svg\" -- run-s icons",
     "serve": "browser-sync start --server --files \"**/*.css, **/*.min.js, **/*.html, **/*.php\"",
     "dev": "run-p serve watch:*",
-    "build": "run-p build:*"
+    "build": "run-p build:*",
+    "docs:js": "jsdoc2md src/js/**/*.js > js.md",
+    "docs:generator": "retype build",
+    "docs": "run-s docs:js docs:generator"
   },
   "keywords": [
     "build",
@@ -29,14 +32,16 @@
   "devDependencies": {
     "autoprefixer": "^10.2.4",
     "browser-sync": "^2.26.14",
+    "jsdoc-to-markdown": "^7.1.1",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
     "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
+    "retypeapp": "^2.3.0",
     "rollup": "^2.53.2",
     "sass": "^1.34.0",
-    "terser": "^5.7.1",
     "svg-sprite": "^1.5.0",
-    "svgo": "^1.3.2"
+    "svgo": "^1.3.2",
+    "terser": "^5.7.1"
   }
 }
