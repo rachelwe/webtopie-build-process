@@ -5,8 +5,7 @@
 /// Grid
 /// Use inline definition of the css variables for config
 .grid {
-  display: block; // stacked on small devices
-  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  display: grid; // stacked on small devices
   gap: var(--grid-gap);
 
   &-auto {
@@ -14,6 +13,7 @@
     grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
   }
   @include mq('small') {
-    display: grid; // activate grid properties
+    // start putting things in columns
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
   }
 }

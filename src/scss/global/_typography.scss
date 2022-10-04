@@ -35,12 +35,11 @@ header h1 {
   border-bottom: 1px solid;
 }
 
-p {
+p + p {
   margin: 2rem 0;
 }
 
-a,
-a:visited {
+a {
   color: var(--color-link);
 }
 
@@ -104,6 +103,18 @@ ol {
 
   ul, ol {
     margin: 0 0 2rem;
+  }
+
+  &.is-unstyled {
+    // accessible hidden lists, see https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &::before {
+      content: "\200B"; /* add zero-width space */
+      position: absolute; /* ensures it doesn't cause a gap */
+    }
   }
 }
 

@@ -8,9 +8,9 @@ Version: 1.0
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
-# Variables
+# Variables & mixins
 
-# Elements
+# Global
   ## Reset
   ## Base
   ## Typography
@@ -19,49 +19,51 @@ Version: 1.0
   ## Forms
   ## Progress
 
-# Components
+# Blocks
   ## Icons
 
-# Layout
+# Composition
   ## Containers
   ## Grid
 
 # Utility
 	## Accessibility
   ## Spacers
+  ## Sizes
 
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-# Variables
+# Variables & mixins
 --------------------------------------------------------------*/
 @import "config/mixins";
 @import "config/variables";
 
 /*--------------------------------------------------------------
-# Elements
+# Global
 --------------------------------------------------------------*/
-@import "elements/reset";
-@import "elements/base";
-@import "elements/typography";
-@import "elements/media";
-@import "elements/tables";
-@import "elements/forms";
-@import "elements/progress";
+@import "global/reset";
+@import "global/base";
+@import "global/typography";
+@import "global/media";
+@import "global/tables";
+@import "global/forms";
+@import "global/progress";
 
 /*--------------------------------------------------------------
-# Components
+# Blocks
 --------------------------------------------------------------*/
-@import "components/icons";
+@import "blocks/icons";
 
 /*--------------------------------------------------------------
-# Layout
+# Composition
 --------------------------------------------------------------*/
-@import "layout/containers";
-@import "layout/grid";
+@import "utility/containers";
+@import "utility/grid";
 
 /*--------------------------------------------------------------
 # Utility
 --------------------------------------------------------------*/
 @import "utility/accessibility";
 @import "utility/spacers";
+@import "utility/sizes";

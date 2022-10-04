@@ -1,0 +1,5 @@
+@use 'sass:map';
+
+@each $name, $value in $sizes {
+  .is-size-#{$name} {font-size: #{$value};}
+}
