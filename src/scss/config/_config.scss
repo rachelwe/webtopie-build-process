@@ -1,0 +1,8 @@
+// One file that has to be "used" in the begining of every file. 
+// Trying to simplify the new Sass module system 
+// after the disappearance of global imports...
+// This file cannot be used for the files inside this folder, 
+// it would create a loop and crash the compiler
+@forward '../config/functions';
+@forward '../config/mixins';
+@forward '../config/variables';

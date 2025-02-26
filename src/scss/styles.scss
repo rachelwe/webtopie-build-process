@@ -2,68 +2,84 @@
 Author: Rachel Pellin
 Author URI: https://prachel.fr/
 Package: webtopie-sass-starter
-Version: 1.0
+Version: 1.2.0
 */
 
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
-# Variables & mixins
-
 # Global
   ## Reset
   ## Base
-  ## Typography
-  ## Media
-  ## Tables
   ## Forms
+  ## Media
   ## Progress
+  ## Tables
+  ## Typography
 
 # Blocks
+  ## Breadcrumb
+  ## Button
+  ## Disclosure
+  ## Form
   ## Icons
+  ## Notification
+  ## video
 
-# Composition
+# Layout
   ## Containers
   ## Grid
 
 # Utility
-	## Accessibility
-  ## Spacers
+  ## Accessibility
+  ## Alignments
+  ## Aspect-ratio
+  ## Blocks
+  ## Colors
+  ## Queries
   ## Sizes
+  ## Spacers
+  ## Typography
 
 --------------------------------------------------------------*/
-
-/*--------------------------------------------------------------
-# Variables & mixins
---------------------------------------------------------------*/
-@import "config/mixins";
-@import "config/variables";
 
 /*--------------------------------------------------------------
 # Global
 --------------------------------------------------------------*/
-@import "global/reset";
-@import "global/base";
-@import "global/typography";
-@import "global/media";
-@import "global/tables";
-@import "global/forms";
-@import "global/progress";
+@forward "global/reset";
+@forward "global/base";
+@forward "global/forms";
+@forward "global/media";
+@forward "global/progress";
+@forward "global/tables";
+@forward "global/typography";
 
 /*--------------------------------------------------------------
 # Blocks
 --------------------------------------------------------------*/
-@import "blocks/icons";
+@forward "blocks/breadcrumb";
+@forward "blocks/button";
+@forward "blocks/disclosure";
+@forward "blocks/form";
+@forward "blocks/icons";
+@forward "blocks/notification";
+@forward "blocks/video";
 
 /*--------------------------------------------------------------
-# Composition
+# Layout
 --------------------------------------------------------------*/
-@import "utility/containers";
-@import "utility/grid";
+@forward "layout/containers";
+@forward "layout/grid";
 
 /*--------------------------------------------------------------
 # Utility
 --------------------------------------------------------------*/
-@import "utility/accessibility";
-@import "utility/spacers";
-@import "utility/sizes";
+@forward "utility/accessibility";
+@forward "utility/alignments";
+@forward "utility/aspect-ratio";
+@forward "utility/blocks";
+@forward "utility/colors";
+@forward "utility/queries";
+@forward "utility/sizes";
+@forward "utility/spacers";
+@forward "utility/typography";

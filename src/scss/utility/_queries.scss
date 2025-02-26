@@ -1,0 +1,16 @@
+@use '../config/config' as *;
+
+/*
+## Queries
+=====================*/
+.is-desktop-only {
+  @include mq-max('small') {
+    display: none;
+  }
+}
+
+.is-mobile-only {
+  @include mq('small') {
+    display: none;
+  }
+}

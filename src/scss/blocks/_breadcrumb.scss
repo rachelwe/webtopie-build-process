@@ -1,0 +1,23 @@
+@use '../config/config' as *;
+
+.breadcrumb {
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
+  margin: .5rem 0 0;
+  ol {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  a {
+    color: var(--color-text);
+    // text-decoration: none;
+  }
+  li > * {
+    // display: inline-block;
+    padding: .5rem 0;
+  }
+  svg {margin: 0 toRem(10);}
+}

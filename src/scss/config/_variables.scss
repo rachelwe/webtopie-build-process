@@ -1,71 +1,203 @@
+@use "sass:map";
+@use "sass:math";
+@use '../config/functions' as *;
+
 /// Spacer values to generate padding & margin classes
 $spacers: (
-  'auto': auto,
-  '0': 0,
-  'xs': '0.5rem',
-  's': '1rem',
-  'm': '2rem',
-  'l': '3rem',
-  'xl': '4rem',
-  'xxl': '5rem',
+  'auto': (
+    'desktop': 'auto',
+    'mobile': 'auto'
+  ),
+  '0': (
+    'desktop': 0,
+    'mobile': 0
+  ),
+  'xxs': (
+    'desktop': toRem(5),
+    'mobile': toRem(5)
+  ),
+  'xs': (
+    'desktop': '0.5rem',
+    'mobile': '0.5rem'
+  ),
+  's': (
+    'desktop': '1rem',
+    'mobile': '1rem'
+  ),
+  'n': (
+    'desktop': '1.5rem',
+    'mobile': '1rem'
+  ),
+  'm': (
+    'desktop': '2rem',
+    'mobile': toRem(22)
+  ),
+  'sl': (
+    'desktop': '2.5rem',
+    'mobile': toRem(30)
+  ),
+  'l': (
+    'desktop': '3rem',
+    'mobile': toRem(35)
+  ),
+  'xl': (
+    'desktop': '4rem',
+    'mobile': toRem(50)
+  ),
+  'xxl': (
+    'desktop': '5rem',
+    'mobile': toRem(60)
+  ),
+  'xxxl': (
+    'desktop': '6rem',
+    'mobile': toRem(70)
+  ),
+  'xxxxl': (
+    'desktop': '7rem',
+    'mobile': toRem(75)
+  )
 );
 
+/// Font sizes values to generate font-size classes
 $sizes: (
-  'xs': rem(14),
-  's': rem(16),
-  'n': rem(18),
-  'm': rem(20),
-  'l': rem(30),
-  'xl': rem(40),
-  'xxl': rem(50),
+  'xs': (
+    'desktop': 14,
+    'mobile': 12
+  ),
+  's': (
+    'desktop': 16,
+    'mobile': 14
+  ),
+  'n': (
+    'desktop': 18,
+    'mobile': 16
+  ),
+  'm': (
+    'desktop': 22,
+    'mobile': 18
+  ),
+  'l': (
+    'desktop': 30,
+    'mobile': 25
+  ),
+  'xl': (
+    'desktop': 40,
+    'mobile': 30
+  ),
+  'xxl': (
+    'desktop': 49,
+    'mobile': 40
+  ),
 );
+
+$colors: (
+  // Brand colors
+  'neutral-100': (
+    'value': #fdfaef,
+    'contrast': #000E23
+  ),
+  'neutral-300': (
+    'value': #6B5528,
+    'contrast': #000E23
+  ),
+  'neutral-500': (
+    'value': #231103,
+    'contrast': #fff
+  ),
+  'primary': (
+    'value': #c1121f,
+    'contrast': #ffffff,
+    'hover': #c1121f,
+    'usedForButtons': true
+  ),
+  'secondary': (
+    'value': #003049,
+    'contrast': #ffffff,
+    'hover': #003049,
+    'usedForButtons': true
+  ),
+  // Semantic colors
+  'success': (
+    'value': #146621,
+    'contrast': #fff,
+    'usedForButtons': true
+  ),
+  'error': (
+    'value': #9E171C,
+    'contrast': #fff,
+    'usedForButtons': true
+  ),
+  'info': (
+    'value': #2B56F2,
+    'contrast': #fff,
+    'usedForButtons': true
+  ),
+  // Generic colors
+  'dark': (
+    'value': #000E23,
+    'contrast': #fff
+  ),
+  'darker': (
+    'value': #000000,
+    'contrast': #fff
+  ),
+  'text': (
+    'value': #000E23,
+    'contrast': #fff,
+    'hover': #000E23,
+    'usedForButtons': true
+  ),
+  'text-light': (
+    'value': #655F53,
+    'contrast': #fff
+  ),
+  'white': (
+    'value': #ffffff,
+    'contrast': #000E23,
+    'hover': #ffffff,
+    'usedForButtons': true
+  ),
+  'background': (
+    'value': #fff,
+    'contrast': #000E23
+  ),
+  'gradient': (
+    'value': linear-gradient(101.72deg, #fdf0d53d 7.96%, #fdf0d5 69.42%),
+    'contrast': #000E23,
+    'fallback': #fff,
+    'alias': #fdffff
+  )
+);
+
+
+$root: (
+  'font-body': '"verdana", system-ui, -apple-system, Arial, "Helvetica Neue", "Segoe UI", Roboto, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+  'font-title': 'var(--font-body)',
+  'font-mono': 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+  // Radius
+  'border-radius': 0px,
+  'border-radius-smaller': 0px,
+  'border-radius-larger': 0px,
+  // Theme config
+  'text-size-desktop': #{toRem(18)},
+  'text-size-mobile': 1rem,
+  // Sizes
+  'site-width': #{toRem(1280)},
+  'site-width-max': #{toRem(1920)},
+  'site-width-small': #{toRem(800)},
+  // Grid
+  'grid-gutter': 1rem,
+  'grid-columns': 2,
+  'grid-item-width': 250px,
+);
+
+
 
 $breakpoints: (
+  extrasmall: 30rem,
   small: 40rem,
+  intermediary: 50rem,
   medium: 65rem,
+  container: map.get($map: $root, $key: 'site-width'),
   large: 90rem,
 );
-
-/// CSS variables for theming and global config
-:root {
-  // Brand colors
-  --color-primary: RoyalBlue;
-  --color-secondary: aliceblue;
-  --color-tertiary: whitesmoke;
-
-  // Semantic colors
-  --color-success: green;
-  --color-error: red;
-  --color-info: cyan;
-
-  // font family
-  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-title: var(--font-body);
-  --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-
-  // Spacers
-  @each $name, $value in $spacers {
-    --spacer-#{$name}: #{$value};
-  }
-
-  // Blocks
-  --border-radius: 0;
-
-  // Theme config
-  --color-text: #222;
-  --color-background: #fff;
-  --color-background-accent: #ddd;
-  --color-link: var(--color-primary);
-  --color-button-bg: var(--color-primary);
-  --color-button-text: #fff;
-  --text-size-desktop: 1.2rem;
-  --text-size-mobile: 1rem;
-
-  // Sizes
-  --site-width: 55rem;
-
-  // Grid
-  --grid-gap: 2rem;
-  --grid-columns: 2;
-  --grid-item-width: 250px;
-}

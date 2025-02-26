@@ -1,0 +1,55 @@
+@use '../config/config' as *;
+
+/*
+## Grid
+=====================*/
+/// @group Layout
+/// Grid
+/// Use inline definition of the css variables for config
+.grid {
+  display: grid; // stacked on small devices
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  
+  &-auto {
+    @extend .grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
+  }
+
+  &-custom {
+    @extend .grid;
+  }
+
+  &--2-on-mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq(small) {
+    gap: var(--grid-gutter);
+    grid-template-columns: repeat(var(--grid-columns), 1fr); // activate grid properties
+    &-auto {grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));}
+
+    &-custom {
+      grid-template-columns: var(--grid-template-columns);
+      grid-template-rows: var(--grid-template-rows);
+    }
+
+    > * {
+      --span: 1;
+      --span-row: 1;
+      grid-column: span var(--span);
+      grid-row: span var(--span-row);
+    }
+  }
+
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.no-wrap {
+  flex-wrap: nowrap;
+}

@@ -1,0 +1,69 @@
+@use '../config/config' as *;
+
+/*
+## Alignments
+=====================*/
+
+// Classic text alignments
+.text-align-center { text-align: center; }
+.text-align-left { text-align: left; }
+.text-align-right { text-align: right; }
+
+// Flexbox vertical alignments (in row mode)
+.align-items-center {align-items: center;}
+.align-items-start {align-items: flex-start;}
+.align-items-end {align-items: flex-end;}
+
+// Flexbox horizontal alignments (in row mode)
+.justify-content-center {justify-content: center;}
+.justify-content-start {justify-content: flex-start;}
+.justify-content-end {justify-content: flex-end;}
+
+// Complete alignments config, used to align most elements inside layout components
+// horizontal-align: left, center, right
+.is-horizontal-align-center,
+.is-horizontal-align-left,
+.is-horizontal-align-right {
+  text-align: var(--text-align);
+  justify-content: var(--flex-align);
+
+  .button_list_inner {justify-content: var(--alignment, var(--flex-align));}
+}
+
+.is-horizontal-align-center {
+  --text-align: center;
+  --flex-align: center;
+}
+
+.is-horizontal-align-left {
+  --text-align: left;
+  --flex-align: flex-start;
+}
+
+.is-horizontal-align-right {
+  --text-align: right;
+  --flex-align: flex-end;
+}
+
+
+// vertical-align: top, center, bottom
+// duplicate of .align-items-* classes above for more flexibility (if other parameters need to be adjusted) & homogeneity in the layouts html
+.is-vertical-align-center,
+.is-vertical-align-start,
+.is-vertical-align-end {
+  --flex-align-v: center;
+  align-items: var(--flex-align-v);
+}
+
+.is-vertical-align-start {--flex-align-v: flex-start;}
+.is-vertical-align-end {--flex-align-v: flex-end;}
+
+
+// Make a column sticky
+@include mq(small) {
+  .has-sticky-left > *:first-child,
+  .has-sticky-right > *:last-child {
+    position: sticky;
+    top: var(--header-height, var(--menu-height, 3rem));
+  }
+}

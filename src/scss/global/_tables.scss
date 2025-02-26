@@ -1,42 +1,55 @@
+@use '../config/config' as *;
+
 /*
 ## Tables
 @source Vanilla CSS - https://github.com/bradleytaunt/vanilla-css
 =====================*/
-
+.table_wrapper {
+  // overflow-x: auto;
+  left: 0;
+  max-width: calc(100vw - 2rem);
+  padding: 1rem 0;
+  overflow: auto;
+}
 table {
-  border: 1px solid var(--color-primary);
   border-collapse: collapse;
   table-layout: auto;
   width: 100%;
-
-  @include mq('medium') {
-    table-layout: fixed;
-  }
+  font-size: 1rem;
+  background: #fff;
+  text-align: left;
 }
 table caption {
-  margin: 2rem 0;
+  margin: .5rem 0;
+  font-size: toRem(14);
+  color: var(--color-neutral-500);
+  font-style: italic;
+  caption-side: bottom;
 }
-table thead {
-  text-align: center;
-}
-table tbody {
-  text-align: right;
-}
-table tr {
-  border-bottom: 1px solid var(--color-primary);
-}
-table tbody tr:nth-child(even) {
-  background: var(--color-tertiary);
+table tbody tr:nth-child(even),
+table tbody tr:hover,
+table tbody tr:focus-within {
+  background: var(--color-neutral-100);
 }
 table th {
-  background: var(--color-secondary);
+  background:  var(--color-neutral-100);
   font-weight: bold;
+  vertical-align: middle;
 }
 table th,
 table td {
-  padding: 1rem;
+  padding: .75rem 1rem;
+  font-size: inherit;
 }
-table th:not(last-of-type),
-table td:not(last-of-type) {
-  border-right: 1px solid var(--color-primary);
+
+tbody td,
+tbody th {
+  border-top: 1px solid hsla(0, 0%, 55%, .2);
+  border-bottom: 1px solid hsla(0, 0%, 55%, .2);
+  
+}
+
+tbody th {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
 }

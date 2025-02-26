@@ -1,0 +1,2 @@
+User-agent: *
+# Sitemap: https://webtopie.fr/sitemap.xml

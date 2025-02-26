@@ -1,5 +1,11 @@
-@use 'sass:map';
+@use '../config/config' as *;
 
-@each $name, $value in $sizes {
-  .is-size-#{$name} {font-size: #{$value};}
-}
+/*
+## Sizes
+=====================*/
+/// see the mixins files to view the function
+/// Generate font sizes
+@include generateSizes($sizes);
+
+.w100 {width: 100%;}
+.mw100 {max-width: 100%;}

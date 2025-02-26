@@ -12,10 +12,10 @@
    *   const node = _select('.my-child-element', nodeParent);
    */
    function _select (selector, parent) {
-    return (parent ? parent : document).querySelector(selector);
+    return (document).querySelector(selector);
   }
 
   const theFirstParagraph = _select('p');
   console.log('This is the first paragraph :', theFirstParagraph);
 
-}());
+})();

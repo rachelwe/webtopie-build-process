@@ -1,0 +1,32 @@
+@use '../config/config' as *;
+
+.notification {
+  grid-column: span 2;
+  &:not(:empty) {
+    padding: 1.5rem;
+    background-color: var(--color-background-accent);
+    color: #000;
+    margin: 1.5rem 0;
+    border-radius: var(--border-radius);
+  }
+
+  .icon {font-size: 1.5rem;}
+
+  h2 {font-family: var(--font-body);}
+
+  &--error:not(:empty) {
+    background-color: var(--color-background-accent);
+    border: 1px solid var(--color-error);
+
+    h2 {color: var(--color-error);}
+  }
+
+  &--success:not(:empty) {
+    background-color: var(--color-background-light);
+    border: 1px solid var(--color-success);
+
+    h2 {color: var(--color-success);}
+  }
+
+  a {color: #000;}
+}

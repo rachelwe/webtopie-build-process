@@ -1,0 +1,63 @@
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:color';
+@use '../config/variables' as *;
+
+/*
+## Colors
+=====================*/
+
+@each $name, $color in $colors {
+  @if (string.index($name, "gradient")) {
+    .is-background-color-#{$name},
+    .is-background-color-#{string.to-lower-case(string.slice("#{color.ie-hex-str(map.get($color, "alias"))}", -6))} {
+      --color-text: #{map.get($color, "contrast")};
+      --color-text-dark: var(--color-text);
+      --color-background: #{map.get($color, "fallback")};
+      color: #{map.get($color, "contrast")};
+      background-color: #{map.get($color, "fallback")};
+      background-image: #{map.get($color, "value")};
+    };
+  } @else {
+    .is-color-#{$name},
+    .is-color-#{string.to-lower-case(string.slice("#{color.ie-hex-str(map.get($color, "value"))}", -6))} {
+      --color-text: #{map.get($color, "value")};
+      --color-text-dark: var(--color-text);
+      --color-focus: var(--color-text);
+      --color-background: #{map.get($color, "contrast")};
+      color: #{map.get($color, "value")}
+    };
+    .is-background-color-#{$name},
+    .is-background-color-#{string.to-lower-case(string.slice("#{color.ie-hex-str(map.get($color, "value"))}", -6))} {
+      --color-text: #{map.get($color, "contrast")};
+      --color-text-dark: var(--color-text);
+      --color-focus: var(--color-text);
+      --color-background: #{map.get($color, "value")};
+      color: #{map.get($color, "contrast")};
+      background-color: #{map.get($color, "value")}
+    };
+
+    @if (map.get($color, "usedForButtons")) {
+      .is-button-color-#{$name},
+      .is-button-color-#{string.to-lower-case(string.slice("#{color.ie-hex-str(map.get($color, "value"))}", -6))} {
+        --color-focus: var(--color-button);
+        --color-button: #{map.get($color, "value")};
+        --color-button-hover: #{map.get($color, "hover")};
+        --color-button-contrast: #{map.get($color, "contrast")};
+      };
+    }
+  }
+}
+
+.is-button-color-default,
+.is-button-color-0000 {
+  // --color-focus: var(--color-text);
+  --color-button: var(--color-text);
+  // --color-button-hover: var(--color-text);
+  --color-button-contrast: var(--color-background);
+}
+
+.is-button-color-white,
+.is-button-color-ffffff {
+  --arrow-background-color: #F9F5EF;
+}

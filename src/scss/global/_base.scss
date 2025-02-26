@@ -1,6 +1,23 @@
+@use "sass:map";
+@use '../config/config' as *;
+
 /*
 ## Base
 =====================*/
+
+/// CSS variables for theming and global config.
+/// see the utility files and mixins to see the automatically generates ones (from the variables file).
+:root {
+  @each $name, $value in $root {
+    --#{$name}: #{$value};
+  }
+
+  // Colors accessible from anywhere
+  @each $name, $color in $colors {
+    --color-#{$name}: #{map.get($color, "value")};
+    --color-#{$name}-contrast: #{map.get($color, "contrast")};
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -25,32 +42,34 @@
   }
 }
 
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100%;
+}
+
 body {
   line-height: 1.5;
-  color: var(--color-text);
   background-color: var(--color-background);
+  color: var(--color-text);
   font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
   font-size: var(--text-size-mobile);
-  @include mq('medium') {
+  @media screen and (min-width: 50rem) {
     font-size: var(--text-size-desktop);
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-dl,
-img,
-figure {
-  margin: 0;
+iframe {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+  border: 2px solid var(--color-neutral-300);
 }
 
-:focus {
-  outline: 2px dotted;
-  outline-offset: 0.25rem;
+[hidden] {
+  display: none !important;
 }

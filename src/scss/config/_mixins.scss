@@ -1,22 +1,46 @@
 @use "sass:math";
 @use "sass:map";
+@use '../config/variables' as *;
+@use '../config/functions' as *;
 
-
-/// Convert pixels to rem units
-/// @param {number} $sizeValue - unitless pixel value
+/// Generate a fluid type sequence from the min font size to the max font size
+/// Interesting CSS alternative : clamp(1rem, 2.5vw, 2rem), waiting for better browser support
+/// Media queries are generated from min and max viewport with parameters
 /// @example
-///   rem(35)
-@function rem($sizeValue: 16) {
-  @return (math.div($sizeValue, 16)) * 1rem;
-}
+///   fluid-type(25, 35)
+///   fluid-type(25, 35, 250, 1920)
+/// @require {function} rem
+/// @require {function} strip-unit
+/// @param {number} $min-font-size - min font size
+/// @param {number} $max-font-size - max font size
+/// @param {number} $min-vw [375] - min viewport with
+/// @param {number} $max-vw [1440] - max viewport with 
+@mixin fluid-type($min-font-size, $max-font-size, $variableName: null, $min-vw: 375, $max-vw: 1440) {
+  $min: toRem($min-vw);
+  $max: toRem($max-vw);
 
-/// Remove units
-/// Mostly used in other functions
-/// @param {string} $value - value with a unit
-/// @example
-///   strip-unit(6rem)
-@function strip-unit($value) {
-  @return math.div($value, ($value * 0 + 1));
+  @if $variableName == null {
+    $variableName: font-size;
+  } @else {
+    $variableName: $variableName;
+  }
+
+  & {
+    font-size: toRem($min-font-size);
+    @media screen and (min-width: $min) {
+      font-size: calc(
+        #{toRem($min-font-size)} + 
+        #{math.div($max-font-size, 16) - math.div($min-font-size, 16)} * 
+        (
+          (100vw - #{toRem($min-vw)}) / 
+          #{strip-unit(math.div($max-vw, 16) - math.div($min-vw, 16))}
+        )
+      );
+    }
+    @media screen and (min-width: $max) {
+      font-size: toRem($max-font-size);
+    }
+  }
 }
 
 /// Generate a fluid type sequence from the min font size to the max font size
@@ -31,24 +55,24 @@
 /// @param {number} $max-font-size - max font size
 /// @param {number} $min-vw [375] - min viewport with
 /// @param {number} $max-vw [1440] - max viewport with 
-@mixin fluid-type($min-font-size, $max-font-size, $min-vw: 375, $max-vw: 1440) {
-  $min: rem($min-vw);
-  $max: rem($max-vw);
+@mixin fluid-type-variable($variableName, $min-font-size, $max-font-size, $min-vw: 375, $max-vw: 1440) {
+  $min: toRem($min-vw);
+  $max: toRem($max-vw);
 
   & {
-    font-size: rem($min-font-size);
+    #{$variableName}: toRem($min-font-size);
     @media screen and (min-width: $min) {
-      font-size: calc(
-        #{rem($min-font-size)} + 
+      #{$variableName}: calc(
+        #{toRem($min-font-size)} + 
         #{math.div($max-font-size, 16) - math.div($min-font-size, 16)} * 
         (
-          (100vw - #{rem($min-vw)}) / 
+          (100vw - #{toRem($min-vw)}) / 
           #{strip-unit(math.div($max-vw, 16) - math.div($min-vw, 16))}
         )
       );
     }
     @media screen and (min-width: $max) {
-      font-size: rem($max-font-size);
+      #{$variableName}: toRem($max-font-size);
     }
   }
 }
@@ -61,35 +85,78 @@
 ///   .ptxl
 /// @example sass
 ///   @include generateSpacers($spacers);
-@mixin generateSpacers ($map) {
+@mixin generateSpacers($map) {
+  :root {
+    @each $name, $value in $map {
+      --spacer-#{$name}: #{map.get($value, 'mobile')};
+    }
+  }
+  
+  @media (min-width: 40rem) {
+    :root {
+      @each $name, $value in $map {
+        --spacer-#{$name}: #{map.get($value, 'desktop')};
+      }
+    }
+  }
+
   @each $name, $value in $map {
-    .ma#{$name} {margin: #{$value};}
-    .mt#{$name} {margin-top: #{$value};}
-    .mr#{$name} {margin-right: #{$value};}
-    .mb#{$name} {margin-bottom: #{$value};}
-    .ml#{$name} {margin-left: #{$value};}
+    // Margins
+    .ma#{$name} {margin: var(--spacer-#{$name});}
+    .mt#{$name} {margin-top: var(--spacer-#{$name});}
+    .mr#{$name} {margin-right: var(--spacer-#{$name});}
+    .mb#{$name} {margin-bottom: var(--spacer-#{$name});}
+    .ml#{$name} {margin-left: var(--spacer-#{$name});}
     .mh#{$name} {
-      margin-left: #{$value};
-      margin-right: #{$value};
+      margin-left: var(--spacer-#{$name});
+      margin-right: var(--spacer-#{$name});
     }
     .mv#{$name} {
-      margin-top: #{$value};
-      margin-bottom: #{$value};
+      margin-top: var(--spacer-#{$name});
+      margin-bottom: var(--spacer-#{$name});
     }
-  
-    .pa#{$name} {padding: #{$value};}
-    .pt#{$name} {padding-top: #{$value};}
-    .pb#{$name} {padding-bottom: #{$value};}
-    .pr#{$name} {padding-right: #{$value};}
-    .pl#{$name} {padding-left: #{$value};}
+    
+    // Paddings
+    .pa#{$name} {padding: var(--spacer-#{$name});}
+    .pt#{$name} {padding-top: var(--spacer-#{$name});}
+    .pb#{$name} {padding-bottom: var(--spacer-#{$name});}
+    .pr#{$name} {padding-right: var(--spacer-#{$name});}
+    .pl#{$name} {padding-left: var(--spacer-#{$name});}
     .ph#{$name} {
-      padding-left: #{$value};
-      padding-right: #{$value};
+      padding-left: var(--spacer-#{$name});
+      padding-right: var(--spacer-#{$name});
     }
     .pv#{$name} {
-      padding-top: #{$value};
-      padding-bottom: #{$value};
+      padding-top: var(--spacer-#{$name});
+      padding-bottom: var(--spacer-#{$name});
     }
+
+    // Height
+    .h#{$name} {height: var(--spacer-#{$name});}
+  }
+}
+
+
+/// @require {variable} map
+/// Generate different font sizes utility classes & css variables
+/// @example css
+///   .is-size-m
+///   --font-size-m
+/// @example sass
+///   @include generateSizes($sizes);
+@mixin generateSizes($map) {
+  :root {
+    @each $name, $value in $map {
+      @if (map.get($value, 'mobile') == map.get($value, 'desktop')) {
+        --font-size-#{$name}: #{toRem(map.get($value, 'desktop'))};
+      } @else {
+        @include fluid-type-variable(--font-size-#{$name}, map.get($value, 'mobile'), map.get($value, 'desktop'))
+      }
+    }
+  }
+
+  @each $name, $value in $map {
+    .is-size-#{$name} {font-size: var(--font-size-#{$name});}
   }
 }
 
@@ -97,9 +164,71 @@
 /// Generate breakpoint syntax
 /// @example sass
 ///   @include mq(small){...};
-@mixin mq($breakpoint) {
+@mixin mq($breakpoint, $other: false) {
   $size: map.get($breakpoints, $breakpoint);
-  @media (min-width: $size) {
+  @if ($other) {
+    @media (min-width: $size) and ($other) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $size) {
+      @content;
+    }
+  }
+}
+
+/// @require {variable} breakpoint
+/// Generate breakpoint syntax
+/// @example sass
+///   @include mq-max(small){...};
+@mixin mq-max($breakpoint, $other: false) {
+  $size: map.get($breakpoints, $breakpoint);
+  @if ($other) {
+    @media (max-width: $size) and ($other) {
+      @content;
+    }
+  } @else {
+    @media (max-width: $size) {
+      @content;
+    }
+  }
+}
+
+/// @require {variable} breakpoint-min
+/// @require {variable} breakpoint-max
+/// Generate breakpoint syntax
+/// @example sass
+///   @include mq-between(small, intermediary){...};
+@mixin mq-between($breakpoint-min, $breakpoint-max) {
+  $size-min: map.get($breakpoints, $breakpoint-min);
+  $size-max: map.get($breakpoints, $breakpoint-max);
+  @media (max-width: $size-max) and (min-width: $size-min) {
     @content;
   }
+}
+
+/// Map deep get
+/// @author Kitty Giraudel
+/// @access public
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Key chain
+/// @return {*} - Desired value
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+      $map: map.get($map, $key);
+  }
+  @return $map;
+}
+
+@mixin sr-only() {
+  border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;	
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }

@@ -1,0 +1,36 @@
+@use '../config/config' as *;
+
+/*
+## Aspect ratio
+=====================*/
+
+.aspect-ratio {
+  --width: 16;
+  --height: 9;
+  position: relative;
+  display: block;
+  padding-bottom: calc(100% / var(--width) * var(--height));
+
+  img,
+  video,
+  iframe,
+  [data-video-consent-text],
+  [data-video-play-text] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+  }
+}
+
+video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

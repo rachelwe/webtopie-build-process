@@ -1,0 +1,9 @@
+@use '../config/config' as *;
+
+[data-toggle-content] {
+  display: none;
+  
+  &[data-expanded="true"] {
+    display: block;
+  }
+}
