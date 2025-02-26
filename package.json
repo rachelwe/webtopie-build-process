@@ -1,11 +1,11 @@
 {
   "name": "webtopie-build-system",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A simple and lightweight build system with npm scripts only, with a scss and js starter pack",
   "main": "index.html",
   "scripts": {
     "scss": "sass --error-css --style=compressed --no-source-map --update src/scss:dist/css",
-    "autoprefixer": "postcss --no-map -u autoprefixer --r dist/css/*",
+    "autoprefixer": "postcss --no-map -u autoprefixer postcss-combine-media-query --r dist/css/*",
     "purgecss": "purgecss --css dist/css/styles.css --content **/*.html **/*.js **/*.php --output dist/css/styles.purged.css",
     "bundle": "rollup --config",
     "uglify": "terser dist/js/app.js -m -o dist/js/app.min.js",
@@ -16,12 +16,9 @@
     "watch:css": "onchange \"src/**/*.scss\" -- run-s scss",
     "watch:js": "onchange \"src/**/*.js\" -- run-s bundle uglify",
     "watch:icons": "onchange \"src/icons/*.svg\" -- run-s icons",
-    "serve": "browser-sync start --server --files \"**/*.css, **/*.min.js, **/*.html, **/*.php\"",
+    "serve": "browser-sync start --config browser-sync.config.js",
     "dev": "run-p serve watch:*",
-    "build": "run-p build:*",
-    "docs:js": "jsdoc2md src/js/**/*.js > js.md",
-    "docs:generator": "retype build",
-    "docs": "run-s docs:js docs:generator"
+    "build": "run-p build:*"
   },
   "keywords": [
     "build",
@@ -32,12 +29,11 @@
   "devDependencies": {
     "autoprefixer": "^10.2.4",
     "browser-sync": "^2.26.14",
-    "jsdoc-to-markdown": "^7.1.1",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
     "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
-    "retypeapp": "^2.3.0",
+    "postcss-combine-media-query": "^1.0.1",
     "rollup": "^2.53.2",
     "sass": "^1.34.0",
     "svg-sprite": "^1.5.0",
