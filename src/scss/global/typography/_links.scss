@@ -1,0 +1,76 @@
+@use '../../config/config' as *;
+
+a {
+  color: var(--color-text);
+  text-underline-offset: 2px; // very recent support, small progressive enhancement
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &.is-unstyled {
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .link_infos {
+    text-decoration: none;
+    opacity: .7;
+    font-size: toRem(14);
+    font-weight: 400;
+    white-space: nowrap;
+  }
+}
+
+a::before,
+a::after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+a[href]:not([href*="local"]):not(.no-external):not([href^="#"]):not([href^="/"]) {
+  position: relative;
+  display: inline-block;
+  padding-right: 1em;
+
+  &.button {
+    padding-right: 1.75em;
+
+    &::after {
+      right: .85em;
+      bottom: .9em;
+    }
+
+  }
+
+  &::after {
+    width: 1em;
+    height: 1em;
+    margin-right: 0;
+    margin-left: .25rem;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke-width='2' stroke='currentColor' stroke-miterlimit='10' d='M22 13v9H2V2h9m3 0h8v8m0-8L10 14'/%3E%3C/svg%3E%0A");
+  }
+}
+
+
+a[download] {
+  &::before {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: .25rem;
+    margin-left: -2px;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke-width='2' stroke='currentColor' stroke-miterlimit='10' d='M12 17.7V.5m-7.7 9.6 7.7 7.6 7.6-7.6m0 8.6v3.8H4.3v-3.8'/%3E%3C/svg%3E%0A");
+  }
+}

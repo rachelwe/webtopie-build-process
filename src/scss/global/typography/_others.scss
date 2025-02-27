@@ -1,0 +1,72 @@
+@use '../../config/config' as *;
+
+p {
+  margin: 1.5rem auto;
+  max-width: var(--site-width-small);
+}
+
+strong,
+b {
+  font-weight: 600;
+}
+em,
+dfn,
+i {
+  font-style: italic;
+}
+sup {
+  font-size: 60%;
+  vertical-align: top;
+}
+sub {
+  font-size: 60%;
+  vertical-align: bottom;
+}
+small {
+  font-size: 80%;
+}
+kbd,
+code,
+samp,
+pre,
+var {
+  font-family: monospace;
+  font-size: 1rem;
+}
+code,
+pre {
+  background: var(--color-neutral-100);
+  padding: 0.5rem 1rem;
+}
+code pre,
+pre code {
+  padding: 0;
+}
+
+pre {
+  margin: 1.5rem auto;
+  max-width: var(--site-width-small);
+}
+
+hr {
+  width: 100%;
+  margin: toRem(40) auto;
+  border: 4px;
+  height: 1px;
+  background: var(--color-neutral-300);
+  position: relative;
+  overflow: visible;
+  max-width: 100%;
+}
+
+mark {
+  display: inline-block;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: .25rem;
+  font-weight: 600;
+  color: inherit;
+
+  background: var(--color-neutral-100);
+}

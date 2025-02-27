@@ -8,6 +8,8 @@
 /// CSS variables for theming and global config.
 /// see the utility files and mixins to see the automatically generates ones (from the variables file).
 :root {
+  scroll-behavior: smooth;
+
   @each $name, $value in $root {
     --#{$name}: #{$value};
   }
@@ -26,10 +28,6 @@
   &::after {
     box-sizing: inherit;
   }
-}
-
-:root {
-  scroll-behavior: smooth;
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */
@@ -61,13 +59,6 @@ body {
   @media screen and (min-width: 50rem) {
     font-size: var(--text-size-desktop);
   }
-}
-
-iframe {
-  display: block;
-  margin: 1rem auto;
-  max-width: 100%;
-  border: 2px solid var(--color-neutral-300);
 }
 
 [hidden] {

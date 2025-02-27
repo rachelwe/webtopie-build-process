@@ -1,4 +1,7 @@
 @use "sass:math";
+@use "sass:map";
+$config: ();
+
 /// Convert pixels to rem units
 /// @param {number} $sizeValue - unitless pixel value
 /// @example
@@ -14,4 +17,13 @@
 ///   strip-unit(6rem)
 @function strip-unit($value) {
   @return math.div($value, ($value * 0 + 1));
+}
+
+
+/// Retrieves a configuration value based on the provided key.
+/// 
+/// @param {String} $key - The key for the configuration value to retrieve.
+/// @return {*} - The configuration value associated with the provided key.
+@function getConfig($key) {
+  @return map.get($config, $key);
 }

@@ -1,0 +1,57 @@
+@use '../../config/config' as *;
+$config: (
+  'titles-color': var(--color-text)
+);
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h2,
+.h3,
+.h4 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  line-height: 1.2;
+  color: getConfig('titles-color');
+  margin: 1rem auto .75rem;
+  max-width: toRem(800);
+}
+
+h1 {
+  font-size: var(--font-size-xxl);
+  font-weight: 500;
+  text-wrap: balance;
+  
+  @media (max-width: 30rem) {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+h2,
+.h2 {
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  text-wrap: balance;
+}
+h3,
+.h3 {
+  font-size: var(--font-size-l);
+  font-weight: 500;
+}
+
+h4,
+.h4 {
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  font-family: var(--font-body);
+}
+
+h5,
+h6 {
+  font-size: var(--font-size-n);
+  text-transform: uppercase;
+}
