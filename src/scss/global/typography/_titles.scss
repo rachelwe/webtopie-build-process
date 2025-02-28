@@ -1,6 +1,11 @@
 @use '../../config/config' as *;
 $config: (
-  'titles-color': var(--color-text)
+  'color': var(--color-text),
+  'h1-size':  var(--font-size-xxl),
+  'h2-size': var(--font-size-xl),
+  'h3-size': var(--font-size-l),
+  'h4-size': var(--font-size-m),
+  'h5-size': var(--font-size-n)
 );
 
 h1,
@@ -15,13 +20,13 @@ h6,
   font-family: var(--font-title);
   font-weight: 600;
   line-height: 1.2;
-  color: getConfig('titles-color');
+  color: getConfig('color');
   margin: 1rem auto .75rem;
   max-width: toRem(800);
 }
 
 h1 {
-  font-size: var(--font-size-xxl);
+  font-size: getConfig('h1-size');
   font-weight: 500;
   text-wrap: balance;
   
@@ -33,25 +38,34 @@ h1 {
 }
 h2,
 .h2 {
-  font-size: var(--font-size-xl);
+  font-size: getConfig('h2-size');
   font-weight: 500;
   text-wrap: balance;
 }
 h3,
 .h3 {
-  font-size: var(--font-size-l);
+  font-size: getConfig('h3-size');
   font-weight: 500;
 }
 
 h4,
 .h4 {
-  font-size: var(--font-size-m);
+  font-size: getConfig('h4-size');
   font-weight: 500;
   font-family: var(--font-body);
 }
 
 h5,
 h6 {
-  font-size: var(--font-size-n);
+  font-size: getConfig('h5-size');
   text-transform: uppercase;
+}
+
+.headline {
+  font-weight: 600;
+  margin: .5rem auto;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: .1rem;
 }

@@ -29,7 +29,7 @@
   </style>
 </head>
 <body>
-  <div id="top" class="page container--s" role="document">
+  <div id="top" class="container--s" role="document">
     <header role="banner">
       <h1>Webtopie build system &mdash;HTML5 Test Page</h1>
       <p>This is a test page filled with common HTML elements to be used to provide visual feedback whilst building CSS systems and frameworks.</p>
@@ -157,16 +157,16 @@
             <caption>Table Caption</caption>
             <thead>
               <tr>
-                <th>Table Heading 1</th>
-                <th>Table Heading 2</th>
-                <th>Table Heading 3</th>
-                <th>Table Heading 4</th>
-                <th>Table Heading 5</th>
+                <th scope="col">Table Heading 1</th>
+                <th scope="col">Table Heading 2</th>
+                <th scope="col">Table Heading 3</th>
+                <th scope="col">Table Heading 4</th>
+                <th scope="col">Table Heading 5</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
-                <th>Table Footer 1</th>
+                <th scope="row">Table Footer 1</th>
                 <th>Table Footer 2</th>
                 <th>Table Footer 3</th>
                 <th>Table Footer 4</th>
@@ -175,28 +175,35 @@
             </tfoot>
             <tbody>
               <tr>
-                <td>Table Cell 1</td>
+                <th scope="row">Table Heading 1</th>
                 <td>Table Cell 2</td>
                 <td>Table Cell 3</td>
                 <td>Table Cell 4</td>
                 <td>Table Cell 5</td>
               </tr>
               <tr>
-                <td>Table Cell 1</td>
+                <th scope="row">Table Heading 1</th>
                 <td>Table Cell 2</td>
                 <td>Table Cell 3</td>
                 <td>Table Cell 4</td>
                 <td>Table Cell 5</td>
               </tr>
               <tr>
-                <td>Table Cell 1</td>
+                <th scope="row">Table Heading 1</th>
                 <td>Table Cell 2</td>
                 <td>Table Cell 3</td>
                 <td>Table Cell 4</td>
                 <td>Table Cell 5</td>
               </tr>
               <tr>
-                <td>Table Cell 1</td>
+                <th scope="row">Table Heading 1</th>
+                <td>Table Cell 2</td>
+                <td>Table Cell 3</td>
+                <td>Table Cell 4</td>
+                <td>Table Cell 5</td>
+              </tr>
+              <tr>
+                <th scope="row">Table Heading 1</th>
                 <td>Table Cell 2</td>
                 <td>Table Cell 3</td>
                 <td>Table Cell 4</td>
@@ -231,8 +238,8 @@ p q r s t u v w x y z { | } ~ </pre>
             <p><a href="https://webtopie.fr">external link</a></p>
             <p><a href="https://webtopie.fr" target="_blank">external link on new tab <span class="link_infos">(new tab)</span></a></p>
             <div class="button_list">
-              <a href="#!" class="button--primary">primary button</a>
-              <a href="#!" class="button--outline">outline button</a>
+              <a href="#!" class="button--primary | is-button-color-primary">primary button</a>
+              <a href="#!" class="button--outline | is-button-color-secondary">outline button</a>
               <a href="#!" class="button--simple">simple button</a>
             </div>
             <p><a href="#!" class="button--link">link button</a></p>
@@ -398,7 +405,7 @@ p q r s t u v w x y z { | } ~ </pre>
           <p><a href="#top">[Top]</a></p>
           <fieldset id="forms__radio">
             <legend>Radio buttons</legend>
-            <ul class="list is-unstyled">
+            <ul class="list | is-unstyled">
               <li><label for="radio1"><input id="radio1" name="radio" type="radio" class="radio" checked="checked"> Option 1</label></li>
               <li><label for="radio2"><input id="radio2" name="radio" type="radio" class="radio"> Option 2</label></li>
               <li><label for="radio3"><input id="radio3" name="radio" type="radio" class="radio"> Option 3</label></li>

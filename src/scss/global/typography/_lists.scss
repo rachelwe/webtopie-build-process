@@ -1,8 +1,10 @@
 @use '../../config/config' as *;
+$config: (
+  'chip-color': var(--color-primary)
+);
 
 ul,
 ol {
-  --chip-color: var(--color-primary);
   margin: 1.5rem auto;
   padding: 0 0 0 1.5rem;
   max-width: var(--site-width-small);
@@ -12,8 +14,7 @@ ol {
   }
 
   li::marker {
-    color: var(--chip-color, var(--color-text));
-    // font-weight: bold;
+    color: getConfig('chip-color');
   }
 
   &.is-unstyled {

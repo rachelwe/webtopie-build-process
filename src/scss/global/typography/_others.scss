@@ -1,4 +1,9 @@
 @use '../../config/config' as *;
+$config: (
+  'background-code': var(--color-neutral-100),
+  'background-mark': var(--color-neutral-100),
+  'color-hr': var(--color-neutral-300)
+);
 
 p {
   margin: 1.5rem auto;
@@ -35,7 +40,7 @@ var {
 }
 code,
 pre {
-  background: var(--color-neutral-100);
+  background: getConfig('background-code');
   padding: 0.5rem 1rem;
 }
 code pre,
@@ -53,7 +58,7 @@ hr {
   margin: toRem(40) auto;
   border: 4px;
   height: 1px;
-  background: var(--color-neutral-300);
+  background: getConfig('color-hr');
   position: relative;
   overflow: visible;
   max-width: 100%;
@@ -68,5 +73,5 @@ mark {
   font-weight: 600;
   color: inherit;
 
-  background: var(--color-neutral-100);
+  background: getConfig('background-mark');
 }

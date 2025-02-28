@@ -1,5 +1,12 @@
 @use '../config/config' as *;
 @use '../global/typography' as *;
+$config: (
+  'color-principal': var(--color-button, var(--color-primary)),
+  'color-contrast':  var(--color-button-contrast, var(--color-white)),
+  'color-focus': var(--color-focus, var(--color-text)),
+  'radius': var(--border-radius-larger),
+  'padding': toRem(10) toRem(26) toRem(14),
+);
 
 .button,
 button,
@@ -8,30 +15,30 @@ button,
 [type="reset"] {
   position: relative;
   text-decoration: none;
-  border-radius: var(--border-radius-larger);
-  color: var(--color-button-contrast, var(--color-white));
-  background-color: var(--color-button, var(--color-primary));
+  border-radius: getConfig('radius');
+  color: getConfig('color-contrast');
+  background-color: getConfig('color-principal');
   display: inline-flex;
   align-items: center;
-  padding: toRem(10) toRem(26) toRem(14);
-  font-family: var(--font-title);
+  padding: getConfig('padding');
+  font-family: var(--font-body);
   font-weight: 500;
   line-height: 1.35;
   width: auto;
-  border: 2px solid var(--color-button, var(--color-primary));
+  border: 2px solid getConfig('color-principal');
   // transition: background-color .15s ease-out, background-image .15s ease-out, border-color .15s ease-out;
   text-align: center;
 
   &:focus,
   &:active,
   &:hover {
-    border-color: var(--color-button, var(--color-primary));
-    background: var(--color-button-contrast, var(--color-white));
-    color: var(--color-button, var(--color-primary));
-    outline-color: var(--color-text, var(--color-primary));
+    border-color: var(--color-button-hover, getConfig('color-principal'));
+    background: getConfig('color-contrast');
+    color: var(--color-button-hover, getConfig('color-principal'));
+    outline-color: getConfig('color-focus');
     
     &::before {
-      background-color: var(--color-button-hover, var(--color-button, var(--color-primary)));
+      background-color: var(--color-button-hover, getConfig('color-principal'));
     }
   }
 }
@@ -43,24 +50,21 @@ button,
   }
 
   &--outline {
-    // --color-button-contrast: transparent !important;
-    padding: toRem(8) toRem(24) toRem(12);
     background: transparent;
-    color: var(--color-button, var(--color-primary));
-    border: 2px solid var(--color-button, var(--color-primary));
+    color: getConfig('color-principal');
+    border: 2px solid getConfig('color-principal');
 
     &:focus,
     &:active,
     &:hover {
-      background: var(--color-button, var(--color-primary));
-      color: var(--color-button-contrast, var(--color-white));
-      // color:;
+      background: getConfig('color-principal');
+      color: getConfig('color-contrast');
     }
   }
 
   &--simple {
     background-color: transparent;
-    color: var(--color-button);
+    color: getConfig('color-principal');
     border: none;
     text-decoration: underline;
     margin: 0 0 0;
@@ -74,8 +78,8 @@ button,
     &:active,
     &:hover {
       background: transparent;
-      color: var(--color-button);
-      outline-color: unset;
+      color: getConfig('color-principal');
+      outline-color: getConfig('color-focus');
       text-decoration: none;
     }
   }

@@ -1,4 +1,10 @@
 @use '../config/config' as *;
+$config: (
+  'background': var(--color-white),
+  'background-accent': var(--color-neutral-100),
+  'color': var(--color-text),
+  'border': 1px solid hsla(0, 0%, 55%, .2)
+);
 
 /*
 ## Tables
@@ -16,13 +22,13 @@ table {
   table-layout: auto;
   width: 100%;
   font-size: 1rem;
-  background: #fff;
+  background: getConfig('background');
   text-align: left;
 
   caption {
     margin: .5rem 0;
     font-size: toRem(14);
-    color: var(--color-neutral-500);
+    color: getConfig('color');
     font-style: italic;
     caption-side: bottom;
   }
@@ -30,11 +36,11 @@ table {
   tbody tr:nth-child(even),
   tbody tr:hover,
   tbody tr:focus-within {
-    background: var(--color-neutral-100);
+    background: getConfig('background-accent');
   }
 
   th {
-    background:  var(--color-neutral-100);
+    background: getConfig('background-accent');
     font-weight: bold;
     vertical-align: middle;
   }
@@ -47,13 +53,8 @@ table {
 
   tbody td,
   tbody th {
-    border-top: 1px solid hsla(0, 0%, 55%, .2);
-    border-bottom: 1px solid hsla(0, 0%, 55%, .2);
-  }
-
-  tbody th {
-    background-color: var(--color-primary);
-    color: var(--color-primary-contrast);
+    border-top: getConfig('border');
+    border-bottom: getConfig('border');
   }
 }
 

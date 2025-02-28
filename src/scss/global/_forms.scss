@@ -1,4 +1,14 @@
 @use '../config/config' as *;
+$config: (
+  'focus': var(--color-focus, var(--color-text)),
+  'background': var(--color-background),
+  'color': var(--color-text),
+  'border': 1px solid var(--color-neutral-300),
+  'border-radius': var(--border-radius-smaller),
+  'padding': toRem(10) toRem(12),
+  'placeholder': var(--color-neutral-300),
+  'select-icon': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"
+);
 
 /*
 ## Forms
@@ -11,24 +21,23 @@ form {
 }
 
 input, select, optgroup, textarea, button {
-  --color-focus: var(--color-text);
   font: inherit;
   appearance: none;
-  border: 1px solid var(--color-neutral-300);
+  border: getConfig('border');
   display: block;
   margin: 0.5rem 0;
-  padding: toRem(10) toRem(12);
-  border-radius: var(--border-radius-smaller);
-  background-color: var(--color-background);
+  padding: getConfig('padding');
+  border-radius: getConfig('border-radius');
+  background-color: getConfig('background');
   line-height: 1.3;
   font-size: var(--font-size-s);
   // font-size: 1rem;
 
-  outline-color: var(--color-focus);
+  outline-color: getConfig('focus');
   outline-offset: 2px;
 
   &::placeholder {
-    color: var(--color-neutral-300);
+    color: getConfig('placeholder');
     opacity: 1;
     font-weight: 400;
   }
@@ -50,20 +59,15 @@ input, select, optgroup, textarea, button {
 
   &:focus,
   &:active {
-    background-color: var(--color-background);
-    color: var(--color-text);
-    border-color: var(--color-focus);
-    outline-color: var(--color-focus);
+    background-color: getConfig('background');
+    color: getConfig('color');
+    border-color: getConfig('focus');
   }
 
 }
 
 label, legend {
-  color: var(--color-dark);
-  &:focus,
-  &:active {
-    color: var(--color-dark);
-  }
+  color: getConfig('color');
 }
 
 input {
@@ -71,13 +75,12 @@ input {
   &[type="radio"] {
     display: initial;
     appearance: auto;
-    margin-right: .25rem;
+    margin-right: .15rem;
   }
 
   &[type="color"] {
     cursor: pointer;
     padding: 0.25rem;
-    border: 1px solid var(--color-secondary);
     height: 2.25rem;
     width: 2.25rem;
   }
@@ -92,14 +95,11 @@ button,
 [type="submit"],
 [type="reset"] {
   cursor: pointer;
-  border: none;
-  border-radius: var(--border-radius);
 }
 
 select {
   cursor: pointer;
-  // background-color: #fff;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.75 12.5L15 18.75L21.25 12.5H8.75Z' fill='%23666666'/%3E%3C/svg%3E");
+  background-image: url(getConfig('select-icon'));
   background-repeat: no-repeat;
   background-position: right 0.85em top 47%;
   padding-right: 1.75rem;

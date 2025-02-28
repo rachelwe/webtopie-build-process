@@ -1,5 +1,9 @@
 @use '../config/config' as *;
-
+$config: (
+  'background': var(--color-neutral-100),
+  'color': var(--color-primary),
+  'border-radius': var(--border-radius)
+);
 /*
 ## Progress
 =====================*/
@@ -7,19 +11,18 @@
 meter,
 progress {
   width: 100%;
-  max-width: 25rem;
   height: 8px;
-  border-radius: var(--border-radius);
+  border-radius: getConfig('border-radius');
   border: none;
 }
 
 progress {
   appearance: none;
-  background: var(--color-background-accent);
-  color: var(--color-primary);
+  background: getConfig('background');
+  color: getConfig('color');
   overflow: hidden;
 
-  &::-webkit-progress-bar {background: var(--color-background-accent);}
-  &::-webkit-progress-value {background: var(--color-primary);}
-  &::-moz-progress-bar {background: var(--color-primary);}
+  &::-webkit-progress-bar {background: getConfig('background');}
+  &::-webkit-progress-value {background: getConfig('color');}
+  &::-moz-progress-bar {background: getConfig('color');}
 }

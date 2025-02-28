@@ -1,4 +1,11 @@
 @use '../../config/config' as *;
+$config: (
+  'background': var(--color-neutral-100),
+  'color': var(--color-text),
+  'border': solid var(--color-secondary),
+  'border-width': 0 0 0 4px,
+  'padding': toRem(24) toRem(32)
+);
 
 blockquote,
 q {
@@ -12,13 +19,14 @@ q {
 blockquote {
   position: relative;
   z-index: 1;
-  background-color: var(--color-neutral-100);
+  background-color: getConfig('background');
   font-style: italic;
-  color: var(--color-text);
+  color: getConfig('color');
   font-weight: 600;
   font-size: var(--font-size-n);
-  padding: toRem(24) toRem(32);
-  border-left: 4px solid var(--color-secondary);
+  padding: getConfig('padding');
+  border: getConfig('border');
+  border-width: getConfig('border-width');
   line-height: inherit;
   max-width: var(--site-width-small);
   margin-left: auto;
