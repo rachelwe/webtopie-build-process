@@ -42,9 +42,9 @@ If you change it, don't forget to modify the associated scripts in `package.json
   Compile Scss to CSS (using Dart Sass)
 
 ### `autoprefixer`
-  `postcss --no-map -u autoprefixer --r dist/css/*`
+  `postcss --no-map -u autoprefixer postcss-combine-media-query postcss-combine-duplicated-selectors --r dist/css/*`
 
-  Add vendor prefixes to your CSS automatically
+  Add vendor prefixes to your CSS automatically & combine selectors/media queries
 
 ### `purgecss`
   `purgecss --css dist/css/styles.css --content **/*.html **/*.js **/*.php --output dist/css/styles.purged.css`
@@ -109,13 +109,11 @@ If you change it, don't forget to modify the associated scripts in `package.json
   Watches for any .svg file in `src` to change, then runs the `icons` task
   
 ### `serve`
-  `browser-sync start --server --files \"**/*.css, **/*.min.js, **/*.html, **/*.php\""`
+  `browser-sync start --config browser-sync.config.js`
 
   Start a new server and watch for CSS, JS, HTML or PHP file changes.
 
-  if your project is already running on a server, you have to modify this line to look like this (just replace `YOUR-LOCAL-SERVER-URL`) :
-  
-  `browser-sync start --proxy http://YOUR-LOCAL-SERVER-URL --files \"css/*.css, js/*.js, *.html, *.php\"`
+  if your project is already running on a server, you have to modify the browser-sync.config.js file by commenting the "server" line and uncommenting + modifying the "proxy" line if needed.
 
 ### `dev`
   `run-p serve watch:*`
@@ -129,28 +127,13 @@ If you change it, don't forget to modify the associated scripts in `package.json
 
   Build the production files without launching a server.
 
-### `docs:js`
-  `jsdoc2md src/js/**/*.js > js.md`
-
-  Generates a markdown file from the js docs comments
-
-### `docs:generator`
-  `retype build`
-
-  Generates a documentation folder from all the markdown files in the project.
-
-### `docs`
-  `run-s docs:js docs:generator`
-
-  Generates all the docs.
-
 ## Author
 This build process is developed and maintained by [Rachel Pellin](https://prachel.fr/) for personal projects and [Webtopie](https://webtopie.fr/) clients.
 
-[![Twitter](https://img.shields.io/badge/Twitter-4A4A4A?style=flat-square&logo=twitter)](https://twitter.com/r_a_chl)  [![LinkedIn](https://img.shields.io/badge/LinkedIn-4A4A4A?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/rachel-pellin/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-4A4A4A?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/rachel-pellin/)
 
 ## Contributions
-Contributions are open, feel free to post an [issue](https://github.com/rachelwe/webtopie-build-process/issues) if you have any problem.
+Contributions are not open, this project is personal, but feel free to fork it to adapt to your own needs !
 
 ## License
 webtopie-build-process is licensed under the MIT License
