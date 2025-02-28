@@ -1,52 +1,5 @@
 @use '../config/config' as *;
 
-.form {
-  &--submit {
-    display: flex;
-
-    .icon {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    label {
-      flex-grow: 1;
-      width: 100%;
-      min-height: 100%;
-      border-radius: 12px 0 0 12px;
-      margin: 0;
-      position: relative;
-    }
-
-    input {
-      margin: 0;
-      padding-left: 3rem;
-      min-height: 100%;
-      width: 100%;
-      border-radius: 50px 0 0 50px;
-    }
-
-    button {
-      margin: 0;
-      border-radius: 0 50px 50px 0;
-      border-color: var(--color-neutral-300);
-      margin-left: -1px;
-
-      &:focus {z-index: 2;}
-    }
-
-    @include mq(small) {
-      
-      button,
-      label {
-        width: auto;
-      }
-    }
-  }
-}
-
 .form .grid {
   gap: .25rem;
 
@@ -60,20 +13,6 @@ fieldset {
 
   .field {
     margin-top: .5rem;
-  }
-}
-
-.is-horizontal {
-  display: flex;
-  flex-wrap: wrap;
-
-  > * {
-    flex-basis: 100%;
-  }
-
-  .field {
-    flex-basis: auto;
-    margin: 0 1rem 0 0;
   }
 }
 

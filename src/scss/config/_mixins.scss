@@ -188,6 +188,8 @@
   @return $map;
 }
 
+/// All elements necessary in an sr-only class.
+/// Put in a mixin to allow usage on multiple places.
 @mixin sr-only() {
   border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
@@ -199,4 +201,20 @@
 	position: absolute !important;
 	width: 1px;	
 	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+/// Use in a ::after or ::before pseudo-element to integrate an icon in CSS
+/// use with care, it's better to use an external svg sprite when possible
+/// Use https://jakearchibald.github.io/svgomg/ to compress svg
+/// Use https://yoksel.github.io/url-encoder/ to get the encoded svg
+/// 
+/// @param {type} $svgUrlEncode - url encoded svg
+/// @example sass
+///   @include css-icon("%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m18 8 4 4-4 4M2 12h20'/%3E%3C/svg%3E%0A");
+@mixin css-icon($svgUrlEncode) {
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  mask-image: url("data:image/svg+xml,#{$svgUrlEncode}");
 }

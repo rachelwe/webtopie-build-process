@@ -76,6 +76,13 @@
             <li><a href="#forms__action">Action buttons</a></li>
           </ul>
         </li>
+        <li>
+          <a href="#other">Autres blocs</a>
+          <ul>
+            <li><a href="#other">Fil d'ariane/breadcrumb</a></li>
+            <li><a href="#other">Notifications</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <main role="main">
@@ -223,6 +230,13 @@ p q r s t u v w x y z { | } ~ </pre>
             <p><a href="/test.pdf" download="">download link <span class="link_infos">(250Ko, PDF)</span></a></p>
             <p><a href="https://webtopie.fr">external link</a></p>
             <p><a href="https://webtopie.fr" target="_blank">external link on new tab <span class="link_infos">(new tab)</span></a></p>
+            <div class="button_list">
+              <a href="#!" class="button--primary">primary button</a>
+              <a href="#!" class="button--outline">outline button</a>
+              <a href="#!" class="button--simple">simple button</a>
+            </div>
+            <p><a href="#!" class="button--link">link button</a></p>
+            <p><a href="#!" class="button--unstyled">unstyled button</a></p>
             <p><strong>Strong is used to indicate strong importance.</strong></p>
             <p><em>This text has added emphasis.</em></p>
             <p>The <b>b element</b> is stylistically different text from normal text, without any special importance.</p>
@@ -452,6 +466,46 @@ p q r s t u v w x y z { | } ~ </pre>
           </fieldset>
           <p><a href="#top">[Top]</a></p>
         </form>
+      </section>
+      <section id="others">
+        <header><h1>Autres blocs</h1></header>
+        <article id="others__breadcrumb"> 
+          <header><h2>Fil d'ariane/breadcrumb</h2></header>
+
+          <nav class="breadcrumb " aria-label="Fil d'ariane">
+            <ol>
+              <li>
+                <a href="/">Accueil</a>
+                <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.5" d="M6.23077 6.5L10 10M10 10L6.23077 13.5M10 10H3" stroke="#142535" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+              </li>
+              <li>
+                <span aria-current="page">Page courante</span>
+              </li>
+            </ol>
+          </nav>
+        </article>
+
+        <article id="others__notifications"> 
+          <header><h2>Notifications</h2></header>
+
+          <div class="notification notification--success" aria-live="polite">
+            <h2 class="is-size-m">
+              Succès : Votre message a bien été envoyé
+            </h2>
+            <p>Merci pour votre message !</p>
+          </div>
+          
+          <div class="notification notification--error" aria-live="polite">
+            <h2 class="is-size-m">
+              Erreur : Votre message n'a pas pu être envoyé
+            </h2>
+            <ul>
+              <li><a href="#erreur-1">Erreur 1</a></li>
+              <li><a href="#erreur-2">Erreur 2</a></li>
+            </ul>
+          </div>
+        </article>
+
       </section>
     </main>
     <footer role="contentinfo">
