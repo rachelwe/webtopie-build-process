@@ -8,13 +8,14 @@
 /// Media queries are generated from min and max viewport with parameters
 /// @example
 ///   fluid-type(25, 35)
-///   fluid-type(25, 35, 250, 1920)
+///   fluid-type(25, 35, '--font-size-xs', 250, 1920)
 /// @require {function} rem
 /// @require {function} strip-unit
 /// @param {number} $min-font-size - min font size
 /// @param {number} $max-font-size - max font size
-/// @param {number} $min-vw [375] - min viewport with
-/// @param {number} $max-vw [1440] - max viewport with 
+/// @param {text} $variableName [null] - Optional, assign values to a css variable & not directly to the font-size attribute.
+/// @param {number} $min-vw [375] - Optional, min viewport with
+/// @param {number} $max-vw [1440] - Optional, max viewport with 
 @mixin fluid-type($min-font-size, $max-font-size, $variableName: null, $min-vw: 375, $max-vw: 1440) {
   $min: toRem($min-vw);
   $max: toRem($max-vw);
@@ -24,40 +25,6 @@
   } @else {
     $variableName: $variableName;
   }
-
-  & {
-    font-size: toRem($min-font-size);
-    @media screen and (min-width: $min) {
-      font-size: calc(
-        #{toRem($min-font-size)} + 
-        #{math.div($max-font-size, 16) - math.div($min-font-size, 16)} * 
-        (
-          (100vw - #{toRem($min-vw)}) / 
-          #{strip-unit(math.div($max-vw, 16) - math.div($min-vw, 16))}
-        )
-      );
-    }
-    @media screen and (min-width: $max) {
-      font-size: toRem($max-font-size);
-    }
-  }
-}
-
-/// Generate a fluid type sequence from the min font size to the max font size
-/// Interesting CSS alternative : clamp(1rem, 2.5vw, 2rem), waiting for better browser support
-/// Media queries are generated from min and max viewport with parameters
-/// @example
-///   fluid-type(25, 35)
-///   fluid-type(25, 35, 250, 1920)
-/// @require {function} rem
-/// @require {function} strip-unit
-/// @param {number} $min-font-size - min font size
-/// @param {number} $max-font-size - max font size
-/// @param {number} $min-vw [375] - min viewport with
-/// @param {number} $max-vw [1440] - max viewport with 
-@mixin fluid-type-variable($variableName, $min-font-size, $max-font-size, $min-vw: 375, $max-vw: 1440) {
-  $min: toRem($min-vw);
-  $max: toRem($max-vw);
 
   & {
     #{$variableName}: toRem($min-font-size);
@@ -79,10 +46,11 @@
 
 /// @require {variable} spacers
 /// @param {variable} map
-/// Generate utility classes from a spacer map
+/// Generate utility css variables & classes from a spacer map
 /// @example css
 ///   .maauto
 ///   .ptxl
+///   --spacer-xs
 /// @example sass
 ///   @include generateSpacers($spacers);
 @mixin generateSpacers($map) {
@@ -150,7 +118,7 @@
       @if (map.get($value, 'mobile') == map.get($value, 'desktop')) {
         --font-size-#{$name}: #{toRem(map.get($value, 'desktop'))};
       } @else {
-        @include fluid-type-variable(--font-size-#{$name}, map.get($value, 'mobile'), map.get($value, 'desktop'))
+        @include fluid-type(map.get($value, 'mobile'), map.get($value, 'desktop'), --font-size-#{$name})
       }
     }
   }
