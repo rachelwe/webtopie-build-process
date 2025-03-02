@@ -12,10 +12,8 @@ If this build process is only used for one project, use the command line `npm in
 
 In order to use the PurgeCSS command, you must have installed it globally using `npm i -g purgecss`. If you want to install it locally, you can run `npm i -D purgecss` and launch the purgeCSS command using npx.
 
-If you want to use the documentation script, you also need to install it globally for it to work using the command `npm i -g retypeapp`
-
 ## Folder structure
-The task are written to work with this file structure :
+The tasks are written to work with this file structure :
 
 ```
 |-- dist                  # Production files
@@ -27,10 +25,10 @@ The task are written to work with this file structure :
     |-- icons
     |-- js
     |-- scss
-|-- rollup.config.json    # Config for Rollup
-|-- svg.config.json       # Config for svg-sprite
-|-- retype.yml            # Config for Retype docs
-|-- index.html            # Your index file
+|-- browser-sync.config.js # Config for Browser-sync
+|-- rollup.config.mjs      # Config for Rollup
+|-- svg.config.json        # Config for svg-sprite
+|-- index.html             # Your index file
 ```
 
 If you change it, don't forget to modify the associated scripts in `package.json` and inside the config files.
@@ -133,7 +131,7 @@ This build process is developed and maintained by [Rachel Pellin](https://prache
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-4A4A4A?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/rachel-pellin/)
 
 ## Contributions
-Contributions are not open, this project is personal, but feel free to fork it to adapt to your own needs !
+Contributions are not open, this project is personal, but feel free to fork it to adapt to your own needs!
 
 ## License
 webtopie-build-process is licensed under the MIT License
