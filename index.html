@@ -10,6 +10,11 @@
   <title>Webtopie build system &mdash; HTML5 Test Page</title>
 
   <style>
+    /* Only for the demo presentation purposes
+       See the scss > layout > _flow.scss file for additional information */
+    article > * + *,
+    header[role="banner"] > * + * {--flow: 1.5rem;}
+    /* header[role="banner"] > * + * {--flow: 3rem;} */
     /* If you want to make element with classes more visible */
     /* *[class] {
     outline: solid 1px #00000017;
@@ -93,7 +98,7 @@
     <main role="main" class="flow" style="--flow: 3rem">
       <section class="flow" id="text">
         <header><h1>Text</h1></header>
-        <article class="flow" style="--flow: 1.5rem" id="text__headings">
+        <article class="flow" id="text__headings">
           <header>
             <h1>Headings</h1>
           </header>
@@ -106,14 +111,14 @@
           <p class="headline">Headline</p>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="text__paragraphs">
+        <article class="flow" id="text__paragraphs">
           <header><h1>Paragraphs</h1></header>
           <div>
             <p>A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
           </div>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="text__blockquotes">
+        <article class="flow" id="text__blockquotes">
           <header><h1>Blockquotes</h1></header>
           <div>
             <blockquote>
@@ -124,7 +129,7 @@
           </div>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="text__lists">
+        <article class="flow" id="text__lists">
           <header><h1>Lists</h1></header>
           <h3>Definition list</h3>
           <dl>
@@ -144,14 +149,14 @@
             <li>List Item 3</li>
           </ul>
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="text__hr">
+        <article class="flow" id="text__hr">
           <header><h1>Horizontal rules</h1></header>
           <div>
             <hr>
           </div>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="text__tables">
+        <article class="flow" id="text__tables">
           <header><h1>Tabular data</h1></header>
           <table>
             <caption>Table Caption</caption>
@@ -213,7 +218,7 @@
           </table>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="text__code">
+        <article class="flow" id="text__code">
           <header><h1>Code</h1></header>
           <p><strong>Keyboard input:</strong> <kbd>Cmd</kbd></p>
           <p><strong>Inline code:</strong> <code>&lt;div&gt;code&lt;/div&gt;</code></p>
@@ -228,7 +233,7 @@ P Q R S T U V W X Y Z [ \ ] ^ _
 p q r s t u v w x y z { | } ~ </pre>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="text__inline">
+        <article class="flow" id="text__inline">
           <header><h1>Inline elements</h1></header>
           <p><a href="#!">This is a text link</a>.</p>
           <p><a href="/test.pdf" download="">download link <span class="link_infos">(250Ko, PDF)</span></a></p>
@@ -260,7 +265,7 @@ p q r s t u v w x y z { | } ~ </pre>
           <p>The time element: <time datetime="2013-04-06T12:32+00:00">2 weeks ago</time></p>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="text__comments">
+        <article class="flow" id="text__comments">
           <header><h1>HTML Comments</h1></header>
           <p>There is comment here: <!--This comment should not be displayed--></p>
           <p>There is a comment spanning multiple tags and lines below here.</p>
@@ -271,7 +276,7 @@ p q r s t u v w x y z { | } ~ </pre>
       </section>
       <section class="flow" id="embedded">
         <header><h1>Embedded content</h1></header>
-        <article class="flow" style="--flow: 1.5rem" id="embedded__images">
+        <article class="flow" id="embedded__images">
           <header><h2>Images</h2></header>
           <h3>No <code>&lt;figure&gt;</code> element</h3>
           <p><img src="https://placehold.co/400" alt="Image alt text"></p>
@@ -283,17 +288,17 @@ p q r s t u v w x y z { | } ~ </pre>
             <figcaption>Here is a caption for this image.</figcaption>
           </figure>
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="embedded__audio">
+        <article class="flow" id="embedded__audio">
           <header><h2>Audio</h2></header>
           <div><audio controls="">audio</audio></div>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="embedded__video">
+        <article class="flow" id="embedded__video">
           <header><h2>Video</h2></header>
           <div><video controls="">video</video></div>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="embedded__canvas">
+        <article class="flow" id="embedded__canvas">
           <header><h2>Canvas</h2></header>
           <div><canvas id="canvas" width="300" height="300">canvas</canvas></div>
           <script type="text/javascript">
@@ -309,22 +314,22 @@ p q r s t u v w x y z { | } ~ </pre>
           </script>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="embedded__meter">
+        <article class="flow" id="embedded__meter">
           <header><h2>Meter</h2></header>
           <div><meter value="50" min="0" low="10" optimum="50" high="90"  max="100">2 out of 100</meter></div>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="embedded__progress">
+        <article class="flow" id="embedded__progress">
           <header><h2>Progress</h2></header>
           <div><progress value="2" min="0" max="10">progress</progress></div>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="embedded__svg">
+        <article class="flow" id="embedded__svg">
           <header><h2>Inline SVG</h2></header>
           <div><svg width="100px" height="100px"><circle cx="50" cy="50" r="50" fill="#1fa3ec"></circle></svg></div>
           
         </article>
-        <article class="flow" style="--flow: 1.5rem" id="embedded__iframe">
+        <article class="flow" id="embedded__iframe">
           <header><h2>IFrame</h2></header>
           <div><iframe src="index.html" height="300" width="900"></iframe></div>
           
@@ -467,44 +472,45 @@ p q r s t u v w x y z { | } ~ </pre>
       </section>
       <section class="flow" id="other">
         <header><h1>Autres blocs</h1></header>
-        <article class="flow" style="--flow: 1.5rem" id="other__breadcrumb"> 
+        <article class="flow" id="other__breadcrumb"> 
           <header><h2>Fil d'ariane/breadcrumb</h2></header>
 
-          <nav class="breadcrumb " aria-label="Fil d'ariane">
-            <ol>
-              <li>
-                <a href="/">Accueil</a>
-                <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.5" d="M6.23077 6.5L10 10M10 10L6.23077 13.5M10 10H3" stroke="#142535" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-              </li>
-              <li>
-                <span aria-current="page">Page courante</span>
-              </li>
-            </ol>
-          </nav>
-        </article>
+            <nav class="breadcrumb " aria-label="Fil d'ariane">
+              <ol>
+                <li>
+                  <a href="/">Accueil</a>
+                  <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.5" d="M6.23077 6.5L10 10M10 10L6.23077 13.5M10 10H3" stroke="#142535" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                </li>
+                <li>
+                  <span aria-current="page">Page courante</span>
+                </li>
+              </ol>
+            </nav>
+          </article>
 
-        <article class="flow" style="--flow: 1.5rem" id="other__notifications"> 
-          <header><h2>Notifications</h2></header>
+          <article class="flow" id="other__notifications"> 
+            <header><h2>Notifications</h2></header>
 
-          <div class="notification notification--success | flow" aria-live="polite">
-            <h2 class="is-size-m">
-              Succès : Votre message a bien été envoyé
-            </h2>
-            <p>Merci pour votre message !</p>
-          </div>
-          
-          <div class="notification notification--error | flow" aria-live="polite">
-            <h2 class="is-size-m">
-              Erreur : Votre message n'a pas pu être envoyé
-            </h2>
-            <ul class="flow" style="--flow: 1rem">
-              <li><a href="#erreur-1">Erreur 1</a></li>
-              <li class="mt0"><a href="#erreur-2">Erreur 2</a></li>
-            </ul>
-          </div>
-        </article>
+            <div class="notification notification--success | flow" aria-live="polite">
+              <h2 class="is-size-m">
+                Succès : Votre message a bien été envoyé
+              </h2>
+              <p>Merci pour votre message !</p>
+            </div>
+            
+            <div class="notification notification--error | flow" aria-live="polite">
+              <h2 class="is-size-m">
+                Erreur : Votre message n'a pas pu être envoyé
+              </h2>
+              <ul class="flow" style="--flow: 1rem">
+                <li><a href="#erreur-1">Erreur 1</a></li>
+                <li class="mt0"><a href="#erreur-2">Erreur 2</a></li>
+              </ul>
+            </div>
+          </article>
 
-      </section>
+        </section>
+      </div>
     </main>
     <footer role="contentinfo" class="text-align-center">
       <p>Made by <a href="http://twitter.com/cbracco">@cbracco</a>. Code on <a href="http://github.com/cbracco/html5-test-page">GitHub</a>. Adapted by <a href="https://webtopie.fr">Webtopie</a></p>

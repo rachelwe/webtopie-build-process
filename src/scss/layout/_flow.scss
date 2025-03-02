@@ -3,6 +3,21 @@ $config: (
   'gap': var(--flow, var(--gap))
 );
 
+//* --- *
+//* How to use the flow class
+//* --- *
+// the --flow value can be declared directly in the html using a
+// style attribute : class="flow" style="--flow: 1.5rem"
+// or directly in a block class (less repetition, better when possible)
+//* --- *
+// When we use the flow class nested in another flow class, 
+// we want to make sure that we use either : 
+// - a wrapper before redeclaring it if we change the "--flow" variable, 
+//   otherwise the new value will affect the parent it is declared on as well.
+// -----OR-----
+// - the lobotomized owl selector in the block class to redefine the variable
+//   ex : article > * + * {--flow: 1.5rem;}
+
 // create vertical rythm easity
 // by making use of the lobotomized owl selector ✨
 // https://cube.fyi/composition.html#examples
