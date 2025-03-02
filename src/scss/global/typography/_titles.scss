@@ -21,7 +21,7 @@ h6,
   font-weight: 600;
   line-height: 1.2;
   color: getConfig('color');
-  margin: 1rem auto .75rem;
+  margin: 0 auto;
   max-width: toRem(800);
 }
 
@@ -63,7 +63,7 @@ h6 {
 
 .headline {
   font-weight: 600;
-  margin: .5rem auto;
+  margin: 0 auto;
   font-size: var(--font-size-xs);
   font-family: var(--font-body);
   text-transform: uppercase;

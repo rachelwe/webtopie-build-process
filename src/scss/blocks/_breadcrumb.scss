@@ -3,7 +3,6 @@
 .breadcrumb {
   color: var(--color-text);
   font-size: var(--font-size-xs);
-  margin: .5rem 0 0;
   ol {
     list-style-type: none;
     padding: 0;
@@ -11,11 +10,7 @@
     display: flex;
     flex-wrap: wrap;
   }
-  a {
-    color: var(--color-text);
-  }
-  li > * {
-    padding: .5rem 0;
-  }
-  svg {margin: 0 toRem(10);}
+  li > * {padding: .5rem 0;}
+  a {color: inherit;}
+  svg {margin: 0 .5rem;}
 }

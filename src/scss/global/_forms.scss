@@ -25,7 +25,7 @@ input, select, optgroup, textarea, button {
   appearance: none;
   border: getConfig('border');
   display: block;
-  margin: 0.5rem 0;
+  margin: 0;
   padding: getConfig('padding');
   border-radius: getConfig('border-radius');
   background-color: getConfig('background');
@@ -104,10 +104,6 @@ select {
   background-position: right 0.85em top 47%;
   padding-right: 1.75rem;
   background-size: 1.5em auto;
-}
-
-legend {
-  margin-bottom: .5rem;
 }
 
 textarea {

@@ -67,7 +67,6 @@ button,
     color: getConfig('color-principal');
     border: none;
     text-decoration: underline;
-    margin: 0 0 0;
 
     &::after {
       background-color: transparent;
@@ -116,16 +115,13 @@ button,
     display: flex;
     flex-wrap: wrap;
     justify-content: var(--alignment, start);
+    gap: var(--gap);
     align-items: center;
     max-width: var(--site-width-small);
     margin: 0 auto;
 
-    > * {margin: .5rem .5rem .5rem 0;}
-    > *:last-of-type{margin-right: -.25rem;}
-
     @include mq(intermediary) {
-      > * {margin: .5rem 2rem .5rem 0;}
-      > *:last-of-type{margin-right: -1rem;}
+      --gap: 1.5rem;
     }
   }
 }

@@ -186,7 +186,7 @@ $root: (
   'site-width-max': #{toRem(1920)},
   'site-width-small': #{toRem(800)},
   // Grid
-  'grid-gutter': 1rem,
+  'gap': 1rem,
   'grid-columns': 2,
   'grid-item-width': 250px,
 );

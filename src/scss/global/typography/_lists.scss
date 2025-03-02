@@ -5,13 +5,9 @@ $config: (
 
 ul,
 ol {
-  margin: 1.5rem auto;
+  margin: 0 auto;
   padding: 0 0 0 1.5rem;
   max-width: var(--site-width-small);
-
-  ul, ol {
-    margin: 0 0 .5rem;
-  }
 
   li::marker {
     color: getConfig('chip-color');
@@ -33,7 +29,7 @@ ol {
 ul {padding: 0 0 0 1rem;}
 
 dl {
-  margin: 1.5rem auto;
+  margin: 0 auto;
   max-width: var(--site-width-small);
 
   dt {font-weight: bold;}

@@ -8,9 +8,8 @@ $config: (
 .notification {
   --accent-color: var(--color-info);
   &:not(:empty) {
-    padding: 1.5rem;
+    padding: 2rem;
     background-color: getConfig('background');
-    margin: 1.5rem 0;
     border-radius: getConfig('radius');
     border: 1px solid getConfig('color');
 

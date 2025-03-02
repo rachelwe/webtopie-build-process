@@ -44,17 +44,6 @@ a::after {
 a[href]:not(.no-external):not([href^="#"]):not([href^="/"])#{getConfig('external-selector')} {
   position: relative;
   display: inline-block;
-  padding-right: 1em;
-
-  &.button {
-    padding-right: 1.75em;
-
-    &::after {
-      right: .85em;
-      bottom: .9em;
-    }
-
-  }
 
   &::after {
     width: 1em;

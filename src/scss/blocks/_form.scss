@@ -4,25 +4,12 @@
   gap: .25rem;
 
   @include mq(small) {
-    gap: var(--grid-gutter);
-  }
-}
-
-fieldset {
-  margin-top: 1rem;
-
-  .field {
-    margin-top: .5rem;
+    gap: var(--gap);
   }
 }
 
 .field {
   position: relative;
-  margin-top: 1rem;
-
-  @include mq(small) {
-    margin-top: 1.5rem;
-  }
 
   &_input {
     width: 100%;
@@ -31,9 +18,7 @@ fieldset {
 
   &_wrapper {
     position: relative;
-    margin-top: .5rem;
   }
-
 
   &_icon {
     position: absolute;
@@ -51,13 +36,11 @@ fieldset {
   &_error {
     color: var(--color-error);
     background-color: #fff;
-    // font-size: toRem(14);
   }
 }
 
 .checkbox,
 .radio {
-  margin: 0 1rem 0 0;
   display: block;
 
   .field_label {

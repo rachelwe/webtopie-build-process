@@ -27,6 +27,7 @@ Version: 1.2.0
 
 # Layout
   ## Containers
+  ## Flow
   ## Grid
 
 # Utility
@@ -56,6 +57,23 @@ Version: 1.2.0
 /*--------------------------------------------------------------
 # Blocks
 --------------------------------------------------------------*/
+// According to the CUBE CSS methodology :
+// What should a block do?
+// - Extend the work already done by the global CSS, layout and utility layers
+// - Apply a collection of design tokens within a concise group
+// - Create a namespace or specificity boost to control a specific context
+
+// # What shouldn’t a block do?
+// - Grow to anything larger than a handful of CSS rules (max 80-100 lines)
+// - Solve more than one contextual problem. For example: styling a card and a button in one file
+
+// # exceptions
+// They recommend the use of data-attributes for variations.
+// I decided to use attributes when the exception is due to a state but
+// to keep class use for aethetic changes, BEM style (.block.block--exception).
+// An exception should provide a concise variation to a block.
+// it shouldn't Variate a block to the point where 
+// it isn’t recognisable anymore. This is where a new block should be created
 @forward "blocks/breadcrumb";
 @forward "blocks/button";
 @forward "blocks/form";
@@ -67,6 +85,7 @@ Version: 1.2.0
 # Layout
 --------------------------------------------------------------*/
 @forward "layout/containers";
+@forward "layout/flow";
 @forward "layout/grid";
 
 /*--------------------------------------------------------------

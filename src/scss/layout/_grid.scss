@@ -25,7 +25,7 @@
   }
 
   @include mq(small) {
-    gap: var(--grid-gutter);
+    gap: var(--gap);
     grid-template-columns: repeat(var(--grid-columns), 1fr); // activate grid properties
     &-auto {grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));}
 
@@ -48,6 +48,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: var(--gap);
 }
 
 .no-wrap {

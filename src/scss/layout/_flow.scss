@@ -1,0 +1,23 @@
+@use '../config/config' as *;
+$config: (
+  'gap': var(--flow, var(--gap))
+);
+
+// create vertical rythm easity
+// by making use of the lobotomized owl selector ✨
+// https://cube.fyi/composition.html#examples
+// https://blog.logrocket.com/css-lobotomized-owl-selector-modern-guide/
+// Like a figma auto layout
+.flow > * + * {
+  margin-top: getConfig('gap');
+}
+
+// primarly used for containers of inline-blocks elements
+// Be careful : it will cancel any margins on the container
+// Use a wrapper if you want to add some
+.flow-all {
+  margin: calc(getConfig('gap') * -1);
+  > * {
+    margin: getConfig('gap');
+  }
+}

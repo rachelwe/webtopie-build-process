@@ -31,14 +31,6 @@ blockquote {
   max-width: var(--site-width-small);
   margin-left: auto;
   margin-right: auto;
-
-  p:first-child {
-    margin-top: 0;
-  }
-
-  p {
-    margin-bottom: 0;
-  }
 }
 
 cite {

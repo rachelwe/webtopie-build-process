@@ -6,7 +6,7 @@ $config: (
 );
 
 p {
-  margin: 1.5rem auto;
+  margin: 0 auto;
   max-width: var(--site-width-small);
 }
 
@@ -49,14 +49,14 @@ pre code {
 }
 
 pre {
-  margin: 1.5rem auto;
+  margin: 0 auto;
   max-width: var(--site-width-small);
 }
 
 hr {
   width: 100%;
-  margin: toRem(40) auto;
-  border: 4px;
+  margin: 2rem auto;
+  border: none;
   height: 1px;
   background: getConfig('color-hr');
   position: relative;
