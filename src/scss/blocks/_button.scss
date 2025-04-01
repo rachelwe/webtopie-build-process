@@ -44,7 +44,7 @@ button,
 }
 
 .button {  
-  &--primary,
+  &--full,
   &--outline {
     @extend .button;
   }

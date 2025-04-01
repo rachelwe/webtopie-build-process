@@ -41,8 +41,8 @@
       <p>With a simple icon system <svg class="icon"><use xlink:href="dist/icons/sprite.svg#map"/></svg>, a sass starter pack and some JS utilities</p>
       <p>When the js interacts with the DOM, we use attributes (classical, aria & custom data) to interact & transmit information. We do not rely on classes to avoid breaking changes problems (in case the style of an element changes but the functionality stays the same.)</p>
       <p>We use most of the CUBE CSS methodology as a base for the CSS. It is simple, loose, aligned with the spirit of CSS and can be combined with other methodology/naming conventions (like BEM) for more information, <a href="https://cube.fyi/">see the CUBE CSS website.</a></p>
-      <p>classes are separated when declared in the HTML using "|" to differentiate between layout, utility & block type classes. like this : <code>class="button--primary | is-button-color-primary"</code>.the "|" character is not used as an independant class in our stylesheet so the browser just ignores it.
-        button--primary is a block class, is-button-color-primary is an utility. Ideally we want this order : <code>class="block | layout | utility"</code></p>
+      <p>classes are separated when declared in the HTML using "|" to differentiate between layout, utility & block type classes. like this : <code>class="button--full | flex | is-button-color-primary"</code>.the "|" character is not used as an independant class in our stylesheet so the browser just ignores it.
+        <code>button--full</code> is a block class, <code>flex</code> is a layout, <code>is-button-color-primary</code> is an utility. Ideally we want this order : <code>class="block | layout | utility"</code></p>
 
       <p>We try to keep everything as consistent as possible.</p>
       
@@ -240,7 +240,7 @@ p q r s t u v w x y z { | } ~ </pre>
           <p><a href="https://webtopie.fr">external link</a></p>
           <p><a href="https://webtopie.fr" target="_blank">external link on new tab <span class="link_infos">(new tab)</span></a></p>
           <div class="button_list">
-            <a href="#!" class="button--primary | is-button-color-primary">primary button</a>
+            <a href="#!" class="button--full | is-button-color-primary">primary button</a>
             <a href="#!" class="button--outline | is-button-color-secondary">outline button</a>
             <a href="#!" class="button--simple">simple button</a>
           </div>
